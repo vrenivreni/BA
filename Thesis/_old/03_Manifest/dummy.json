@@ -1,0 +1,34 @@
+FrontCamera{
+  "service": {
+    "service_id": "id-11111",
+    "node_mac_address": "09:B0:F1:EE:AC:95"
+  },
+
+  "parameter": {
+    "name": "CameraFront",
+    "groupId": "group-12345",
+    "domain": "front",
+    "timesync": "0020",
+    "maxLatency": "20",
+    "minLatency": "10",
+    "asilLevel": "QM",
+    "securityLevel": "SE0"    
+  },
+
+  "messages": [
+      {
+        "message_id": "parking01",
+        "sender_id": "id-11111",
+        "receiver_id": "id-11112",
+		"messageSize": "1000",
+		"frequency": "15"
+      },
+      {
+        "message_id": "safety01",
+        "sender_id": "id-11111",
+        "receiver_id": "id-11112",
+		"messageSize": "1000",
+		"frequency": "1"
+      }
+    ]
+  }

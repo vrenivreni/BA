@@ -1,0 +1,45 @@
+\section{Netzwerkübersicht}
+In der Zieldefinition der Arbeit wurde bereits ein grober Überblick über die Funktion des Netzwerk-Managers im System gegeben, welcher jedoch nicht die einzige Komponente im Netzwerk ist. Teil der Abhandlung war es auch, das Zusammenspiel der einzelnen Komponenten in einem sog. dynamischen Netzwerk zu verstehen und die Funktionalität weiter zu vervollständigen. Um die Sicht auf das Netz etwas näher spezifizieren, wird im Folgenden näher darauf eingegangen. \newline
+Der Manager wird von anderen Netzwerkkomponenten mit Eingaben befüllt, anhand derer er Entscheidungen treffen kann. In Abb. \ref{fig:GrundNetz} wird ein einfaches Netzwerk mit wenigen Komponenten dargestellt. Eine Anwendung soll im System gestartet werden. Dies hat die Aufgabe Daten von einem Sender zu einen Empfänger zu übermitteln. Im einfachsten Fall, bedingt dies den Datenaustausch zweier \ac{ECU} die mittels einem Switches verbunden sind. Um die Kommunikationsstrecke nach den geforderten Bedingungen der Applikation zu konfigurieren, müssen der Applikations-Orchestrator, welcher für die Verwaltung der Anwendungen verantwortlich ist und der Netzwerk-Manager, der wiederum für die Konfiguration für das Netzwerk zuständig ist, ein geeignetes Setup für das System erstellen. Beide Komponenten werden detaillierter im Kapitel \ref{sec:Config} vorgestellt. 
+
+Im Laufe der Arbeit wird noch spezifischer auf das Netzwerk eingegangen. Vorerst soll der generelle Überblick über das System genügen.
+
+\singlefigurePlus{\label{fig:GrundNetz}}{99_IMG/03_manifest/netzwerk.png}{Darstellung eines vereinfachten Netzwerkes}
+
+\section{Der Netzwerk-Manager}\label{sec:Netzwerkmanager}
+Eines zentrale Komponente im zukünftigen Fahrzeugnetzwerk wird der Netzwerkmanager sein. Dieser enthält alle nötigen Funktionen um das Netzwerk zu konfigurieren. Er ist eine der zentralen Bausteine im System und kennt die gesamte Topologie des Fahrzeuges. Anhand dieser Kenntnisse und der vom Orchestrator übergebenen Parameter, kann der Manager, die sich im Fahrzeug befindenden Switche und \ac{ECU} konfigurieren. Die Funktionsweise des Netzwerkmanagers kann am Besten mit dem \acf{SDN} Prinzip erläutert werden \cite{SDNBook}. Die Grundidee hinter \ac{SDN} ist die zentrale Verwaltung aller Netzwerkkomponenten in einem System. Hierbei kommt es zu einer Abstraktion der Schichten. Es wird die \emph{Control Plane} (z. dt. Kontrollschicht) von der \emph{Data Plane} (z. dt. Datenschicht) abgespalten. Die Kontrollschicht ist für die Steuerung der Datenschicht verantwortlich, was der Abb. \ref{fig:sdn} vereinfacht dargestellt ist. 
+
+\singlefigure{\label{fig:sdn}}{99_IMG/04_Netzwerk/sdn.png}{Aufbau der Schichten mittels \ac{SDN}}
+
+\newpage
+In der mittleren Schicht befindet sich der Manager. Dieser sendet und empfängt mittels Schnittstellen Daten und Befehle. So kann beispielsweise eine Anwendung eine Netzwerkanforderung an den Manager senden. Dieser wiederum konfiguriert anhand der empfangenen Daten die entsprechenden \ac{ECU}. Das Prinzip wird auch im Fahrzeugnetz weiter verfolgt und angewendet.
+
+In Abb. \ref{fig:Manager} wird der Netzwerkmanager im Fahrzeug veranschaulicht. Er besteht aus vier Hauptkomponenten (eng. Core Functionality):
+
+\begin{itemize}
+	\item Path finding: zu dt.  Pfadfindung. Diese ist verantwortlich für das Finden des best-möglichen Pfades im Netzwerk.
+	\item Network Discovery: zu dt. Netzwerkerkennung. Diese kümmert sich um die Netzwerktopologie, damit diese immer aktuell ist.
+	\item Interface to other components: zu dt. Schnittstelle nach außen.
+	\item Remote Configuration: zu dt. automatische Konfigurationsschnittstelle. Sie konfiguriert die \ac{ECU} nach den Anforderungen des Manifests.
+\end{itemize}
+
+\newpage
+
+\singlefigurePlus{\label{fig:Manager}}{99_IMG/02_grundlagen/NetzwerkManager.png}{Aufbau des Netzwerkmanagers}
+
+Die ebenfalls im Bild dargestellten \emph{Feature Implementations} stellen die einzelnen Funktionen des Managers dar, mit denen er das Netzwerk konfigurieren kann. Werden Daten aus der Anwendungsschicht an die Schnittstelle des Managers übergeben, kann dieser mittels der implementierten Funktionen die entsprechende Konfiguration für das System erstellen. In den Funktionen sind alle nötigen Mechanismen hinterlegt, die eine \ac{ECU} benötigt, um die Netzwerkanforderungen zu erfüllen. Ein Beispiel hierfür sind, die in Abschnitt \ref{ref:TSNGrundlagen} beschrieben Shaper, mit denen bestimmte Latenzzeiten eingehalten werden können.
+
+Im weiteren Verlauf dieser Arbeit werden einzelne Funktionen und die Konfigurationsschnittstelle implementiert und getestet. Die anderen Komponenten des Netzwerkmanagers werden als gegeben betrachtet und sind nicht Teil der Ausarbeitung.
+
+\section{Der Applikations-Orchestrator}\label{sec:Orchestrator}
+Der Orchestrator ist im System für die Verwaltung und Verteilung der Anwendungen auf den einzelnen \ac{ECU}'s verantwortlich. Er kennt nicht die gesamte Netzwerktopologie, sondern weiß lediglich welche \ac{ECU} und Anwendungen sich gerade im Netzwerk befinden. Der Applikations-Orchestrator ist in erster Linie für die Verwaltung der Funktionalität des Systems verantwortlich. Wenn eine neue Applikation gestartet werden soll, liest er die benötigten Parameter aus dem Applikationsmanifest aus und ermittelt eine Liste an geeigneten \ac{ECU}, die sich im System befinden. Diese werden in absteigender Reihenfolge ihrer Tauglichkeit nach sortiert. In der Liste befinden sich alle Geräte, die für die Ausführung der Anwendung geeignet sind. 
+\newpage
+Die Auswahl wird anhand der benötigten Leistung einer Applikation getroffen, was einen fehlerfreien Ablauf der Funktionen garantiert. Als Leistungsparameter werden beispielsweise Speicherbedarf und CPU Leistung angegeben. 
+
+Ist die Liste vollständig, übergibt er diese mit den Parametern aus dem Manifest an den Netzwerkmanager. Dieser prüft die gewünschten Endgeräte der Reihe nach auf ihre netzwerkseitige Tauglichkeit. Sobald eine der \ac{ECU}'s den Anforderungen entspricht, sendet er die \ac{ID} des Gerätes an den Orchestrator zurück. Wenn dies der Fall ist, kann die Anwendung auf der zugehörigen \ac{ECU} gestartet werden. Sollte keines der Endgeräte in der Liste für den Betrieb geeignet sein, gibt der Manager einen Fehler zurück. Dies bedingt im Orchestrator einen Abbruch des Versuches, die  Anwendung zu starten.
+
+Abb. \ref{fig:Orchestrator} veranschaulicht den Findungsprozess einer geeigneten \ac{ECU} für eine Applikation im Netzwerk. Hierbei müssen die beiden Komponenten, Orchestrator und Netzwerkmanager, miteinander kommunizieren.
+
+\singlefigureMax{\label{fig:Orchestrator}}{99_Dias/Orchestrator.png}{Kommunikation von Orchestrator und Manager}
+
+\newpage

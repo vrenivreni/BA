@@ -1,0 +1,51 @@
+\section{Ethernet Grundlagen}
+In den folgenden Unterkapiteln wird kurz auf Ethernet spezifische Grundlagen eingegangen, welche im Laufe dieser Arbeit relevant werden. Es wird keine vollständige Definition von Ethernet erfolgen. Diese kann bei Bedarf in den zusätzlich angegeben Quellen recherchiert werden. Hier wird lediglich auf die Grundlagen und die für die Arbeit relevanten Eigenschaften von Ethernet eingegangen. 
+\subsection{Ethernet-Frame}\label{sec:Ethernet}
+In Abbildung \ref{fig:EthernetFrame} wird ein kompletter Ethernet-Frame auf Layer 2 des \acs{ISO}/\acs{OSI}-Modell grafisch dargestellt. Das \acs{ISO}/\acs{OSI}-Modell ist ein standardisiertes Referenzmodell für Netzwerkprotokolle. Es ist in sieben verschiedenen Schichten gegliedert. Dies kann detailliert unter Kapitel 1.4 im Werk von A. Tanenbaum nachgelesen werden\cite{ComputerNetworking}.\newline
+Ein Ethernet Paket ist in folgende Blöcke unterteilt:
+\newpage
+\begin{itemize}
+	\renewcommand{\labelitemi}{$\bullet$}
+	\renewcommand{\labelitemii}{\scriptsize$\blacksquare$}
+	\item MAC-Adressen:
+	\begin{itemize}
+		\item Destination Address: Gibt die Zieladresse des Paketes an
+		\item Source Address: Gibt die Adresse des Versenders an
+	\end{itemize}
+	\item Ethertype: Gibt den Typen des Kommunikationsprotokolls an \cite{EthernetType}
+	\item Payload: In diesem Block befinden sich die zu versendenden Daten
+	\item CRC Checksum: Prüfung des übertragenen Frames auf Fehler, wie beispielsweise Bit-Fehler
+\end{itemize}
+
+\singlefigure{\label{fig:EthernetFrame}}{99_IMG/02_grundlagen/EthernetFrame.png}{Ethernet Frame auf Layer 2 Ebene}
+
+Die ersten drei Blöcke bilden zusammen den Ethernet-Header eines Pakets. Dieser wird vom weiterleitenden Switch oder Empfänger als erstes gelesen.
+
+\subsection{\acf{MACsec}}\label{sec:MacSec}
+\acs{MACsec} ist ein Mechanismus, der die Sicherheit einer Punkt-zu-Punkt-Ethernet-Verbindung ermöglicht. Es handelt sich um einen Mechanismus, der sich auf Layer 2 im ISO/OSI Modell befindet. Wenn \acs{MACsec} verwendet wird, muss der Ethernetframe abgeändert werden. \newline
+Grundsätzlich werden in einer Ende-zu-Ende Kommunikation die Sicherheitsschlüssel der beiden Teilnehmer überprüft. Nur wenn diese übereinstimmen wird die Kommunikation erlaubt. Wenn \acs{MACsec} aktiv ist, wird nicht nur die Kommunikation selbst geschützt, sondern es findet auch eine Integritätsprüfung der gesendeten Daten durch das Feldes \emph{Integrity Check Value} statt. Diese enthält eine Prüfsumme, die über die geschützten Daten gebildet wird und sich ändert, falls diese verfälscht werden. Die Überprüfung der generellen Verbindung wird anhand der Daten im Header des Frames durchgeführt. 
+\newpage
+Besonders wichtig für das Prinzip von \acs{MACsec} ist hierbei der sog. \emph{SecTAG}\cite{IEEE802_1AE_SEC}, welcher in Abb. \ref{fig:MacSec} dargestellt wird. Dieser Bereich unterteilt sich nochmals in fünf Blöcke, anhand derer verschiedene Informationen und Sicherheitsmechanismen definiert sind \cite{IEEE802_1AE_SEC}.
+
+\singlefigureMax{\label{fig:MacSec}}{99_IMG/02_grundlagen/MacSec.png}{Ethernet Frame mit \ac{MACsec}}
+
+
+Diese Auflistung beschreibt kurz die Bedeutung der einzelnen Blöcke aus dem Segment \emph{SecTAG}:
+\begin{itemize}
+	\renewcommand{\labelitemi}{$\bullet$}
+	\renewcommand{\labelitemii}{\scriptsize$\blacksquare$}
+	\item Ethernet Type: Gibt den Typen des Kommunikationsprotokolls an \cite{EthernetType}
+	\item TCI/AN:
+		\begin{itemize}
+			\item TCI: Tag Control Information. In diesem Block ist unter anderem die Versionsnummer des  \acs{MACsec}-Protokoll enthalten.
+		\end{itemize}
+		\begin{itemize}
+			\item AN: Association Number identifiziert bis zu vier sichere Verbindungen über einen gesicherten Kanal.
+		\end{itemize}
+	\item Short Length: Ganzzahliger Wert, der die Anzahl der Oktette zwischen dem letztem Oktett von SecTAG und dem ersten Oktett von der Integrity Check Value angibt.
+	\item Paket Number: Eindeutige Nummer des gesendeten Pakets.
+	\item Secure Channel Identifier: Anhand dieser ID kann der sichere Kanal identifiziert werden.
+\end{itemize}
+
+\newpage
+

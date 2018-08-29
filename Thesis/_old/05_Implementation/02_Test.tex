@@ -1,0 +1,18 @@
+\section{Testfall Ingress Filtering}\label{sec:Ingress}
+Der gewählte Testfall bezieht sich auf das Ingress-Filtering eines Datenstroms, welches bereits in Abschnitt \ref{sec:Filter} kurz angesprochen wurde. Dieser Filter wird empfängerseitig an den jeweiligen Ports, der sich in der Kommunikationsstrecke befindenden Geräten, konfiguriert. Es handelt sich dabei um eine Filterung auf  Layer 2 Eben. Ingress-Filterring ist ähnlich aufgebaut wie eine Firewall. Im Initialzustand sind alle Kommunikationen verboten. Erst wenn Regeln definiert werden, die das ein- oder ausgehen von Nachrichten erlauben, kann eine Kommunikationsstrecke aufgebaut werden. So werden bei einer Ende-zu-Ende Kommunikation lediglich die beiden Endpunkte zugelassen, die auch in den Regeln festgelegt sind. Hierbei werden die Partner anhand ihrer \ac{MAC}-Adressen in den Regeln definiert. So wird sichergestellt, dass nur die gewünschten Teilnehmer die Datenpakete empfangen und versenden können. 
+
+Für die Regelung der Kommunikation haben sich hauptsächlich zwei Verfahren etabliert. 
+\begin{itemize}
+	\item \emph{Application Whitelisting}
+	\newline Dieses Verfahren verbietet zuerst jegliche Kommunikation. Es müssen explizite Regeln für den Nachrichtenaustausch angelegt werden, um diese zu erlauben. In einem Netzwerk mit vielen Teilnehmern, bei denen nur wenige untereinander eine Verbindung aufbauen dürfen, ist dies ein vielversprechender Ansatz. Es werden wenige Regel benötigt, da Verbote nicht definiert werden müssen.
+		
+	\item \emph{Application Blacklisting}
+	\newline Beim \emph{Blacklisting} ist grundsätzlich jegliche Verbindung zugelassen. Ein Verbot der Kommunikation zweier Partner kann nur durch eine Regel definiert werden. Dieser Ansatz macht nur Sinn, wenn es sehr viel Netzwerkteilnehmer gibt, bei denen die meisten untereinander Kommunizieren dürfen. Es müssen somit nur wenige Regeln für Verbote definiert werden.
+\end{itemize}
+
+\newpage
+
+Für dies Arbeit wird erste Ansatz verwendet, da es eine überschaubare Anzahl an Kommunikationspartnern gibt, die wiederum aus Sicherheitsgründen nicht alle untereinander kommunizieren dürfen. Ein weiter Vorteil des Ansatzes ist, dass durch das explizite Erlauben der Kommunikation das Fehlerrisiko einer Verfälschung der Daten durch andere Teilnehmer minimiert wird. Dies kann durch einen anderen Netzwerkteilnehmer erfolgen, der die Nachricht auch empfangen konnte und sie abgefälscht weiterleitet. Ein Verfälschen der Nachrichten kann sowohl mutwillig durch eine manipulierten Netzwerkteilnehmer, als auch unwissentlich durch einen Defekt erfolgen. Beide Fälle müssen im System abgefangen werden, da durch sie ein Risiko entsteht.
+
+\section{Konfiguration der Endgeräte}\label{sec:ConfigEndgerät}
+In der Umsetzung der Arbeit wird sich auf die Konfiguration der Switche in einer Kommunikationsstrecke beschränkt, weshalb in diesem Fall ein Endgerät gleichzusetzen ist mit einem Switch. Generell gibt es zwei Möglichkeiten der Konfiguration der Endgeräte. Die erste ist eine Erstellung einer Konfigurationsdatei im \ac{XML} Format, welche alle generierten Einstellungen für den jeweiligen Switch enthält. Durch aufspielen dieser Datei auf ein Endgerät, kann dieser neu konfiguriert werden. Die zweite Möglichkeit, auf die sich auch dies Arbeit bezieht, ist das Nutzen eine im Projekt eigens für die Entwicklung geschriebene Library, welche alle Funktionen zur Konfiguration eines Endgerätes enthält. Diese wurde bereits im Vorfeld entwickelt und soll nun im Netzwerkmanager integriert und gesteuert werden. Hierzu wird von den in Abschnitt \ref{sec:FeatureDef} definierten Featuren, eine Liste an Instruktionen erzeugt, welche am Ende einer Konfigurationsfindung von der Funktionalität der Library abgearbeitet werden soll.

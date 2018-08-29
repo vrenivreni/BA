@@ -1,0 +1,183 @@
+\documentclass[12pt,a4paper]{report}
+
+%BEGIN_FOLD layout
+	\usepackage[margin=1cm,headheight=1cm]{geometry}
+	\geometry{
+		a4paper,
+		total={210mm,297mm},
+		left=30mm,
+		right=30mm,
+		top=30mm,
+		bottom=30mm,
+	}
+%END_FOLD
+
+%BEGIN_FOLD typography
+	\usepackage{kpfonts}
+	\usepackage{inconsolata}
+	\usepackage{cite}
+	\usepackage{ragged2e}
+	\usepackage{microtype}
+	\usepackage{lipsum}
+	
+	\renewcommand{\baselinestretch}{1.2}
+%END_FOLD
+
+%BEGIN_FOLD content
+	\usepackage[utf8]{inputenc}
+	\usepackage[T1]{fontenc}
+	\usepackage{parskip}
+
+	\usepackage[german]{babel}
+	\usepackage{csquotes}
+
+	\usepackage{enumitem}
+	
+	\usepackage{nicefrac}
+	
+	\usepackage{url}
+	\usepackage[hidelinks]{hyperref}
+	
+	\usepackage[printonlyused]{acronym}
+	\makeatletter
+	\AtBeginDocument{%\renewcommand*{\AC@hyperlink}[2]{#2} %
+	}
+	\makeatother
+	
+	\usepackage{chngcntr}
+	\counterwithout{figure}{chapter}
+	
+	\usepackage[labelfont=bf]{caption}
+	
+	
+	\usepackage[bottom]{footmisc}
+%END_FOLD
+
+
+%BEGIN_FOLD includes
+	\usepackage{pdfpages}
+	\usepackage{graphics}
+%END_FOLD
+
+%BEGIN_FOLD tables
+	\usepackage{makecell, tabularx}
+	\usepackage{multirow}
+	\renewcommand{\arraystretch}{1.2}
+%END_FOLD
+
+%BEGIN_FOLD graph
+	\usepackage{tikz,times}
+	\usetikzlibrary{mindmap,backgrounds}
+%END_FOLD
+
+
+
+%BEGIN_FOLD chapter layout
+	\usepackage[toctitles]{titlesec}
+	
+	\titleformat*{\section}{\Large \bfseries}
+	
+	\makeatletter
+	\def\thickhrulefill{\leavevmode \leaders \hrule height 1ex \hfill \kern \z@}
+	\def\@makechapterhead#1{%
+		\vspace*{-2cm}%
+		{\parindent \z@ 
+			{\raggedleft \reset@font
+				\vspace*{-3cm} %
+				\textcolor{black!75}{\rule{2.5cm}{6cm}} \\[-3.5cm] %
+				\textcolor{lightgray}{\chaptername \hphantom{~~~~~~}\\[-0.8cm]} %
+				\fontsize{15ex}{15ex}\selectfont %
+				\bfseries\textcolor{white}{\thechapter \scriptsize  \hphantom{~~~~~~~~}}\\[1.75cm]\par\nobreak
+			} %
+			\par\nobreak
+			\interlinepenalty\@M
+			{\raggedright \Huge \bfseries #1}%
+			\par\nobreak
+			\hrulefill
+			\par\nobreak
+			\vskip 30\p@
+	}}
+	\def\@makeschapterhead#1{%
+		\vspace*{5\p@}%
+		{\parindent \z@ 
+			{\raggedleft \reset@font
+				\vspace*{-3.5cm} %
+				\fontsize{15ex}{15ex}\selectfont %
+				\bfseries\vphantom{\thechapter}\par\nobreak}%
+			\par\nobreak
+			\interlinepenalty\@M
+			{\raggedright \Huge \bfseries #1}%
+			\par\nobreak
+			\hrulefill
+			\par\nobreak
+			\vskip 30\p@
+	}}
+%END_FOLD
+
+
+%BEGIN_FOLD bibliography
+	\usepackage{babelbib}
+	\bibliographystyle{babplain}
+
+%END_FOLD
+
+%BEGIN_FOLD colors
+	\usepackage{xcolor}
+	\definecolor{lightgray}{HTML}{E7E7E7}
+	\definecolor{lightergray}{HTML}{F7F7F7}
+%END_FOLD
+
+\input{commands.tex}
+\input{variablen.tex}
+
+\begin{document}
+	\pagenumbering{Roman}	
+	\newpage
+	\input{titelseite.tex}
+	
+	\input{danksagung.tex}
+	
+	\input{sperrvermerk.tex} 
+	
+	\tableofcontents
+	
+	\newpage
+	\input{akronyme.tex}
+
+	\newpage
+	\renewcommand{\arraystretch}{1.2}
+	\pagenumbering{arabic}
+	\input{00_Einleitung/00.tex}	
+	
+	\newpage
+	\input{02_Grundlagen/00.tex}
+	
+	\newpage
+	\input{03_Manifest/00.tex}
+	
+	\newpage
+	\input{04_Netzwerk/00.tex}
+	
+	\newpage
+	\input{05_Implementation/00.tex}
+	
+	\newpage
+	\input{06Fazit/00.tex}
+	
+	\newpage
+	\addcontentsline{toc}{chapter}{Abbildungsverzeichnis}
+	\listoffigures
+	
+	\newpage
+	\listoftables% Tabellenverzeichnis
+
+	\begin{flushleft}
+		\newpage
+		\def\UrlBreaks{\do\/\do-}
+		\bibliography{literatur}
+		\addcontentsline{toc}{chapter}{Literaturverzeichnis}
+	\end{flushleft}
+	
+
+	% \input{einverstaendniserklaerung-logo.tex}
+\end{document}

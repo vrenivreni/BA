@@ -1,0 +1,58 @@
+\section{\acl{AVB}}
+Im Jahr 2005 würde die Gruppe \acf{AVB} (IEEE 802.1) gegründet, um eine synchronisiertes und priorisiertes Übertragen von Audio- und Videodaten im Netzwerk zu ermöglichen. Die Gruppe erstellte Spezifikationen für die Datenübermittlung in Layer (dt. Schicht) 2, des \acl{ISO}/\acl{OSI} Modells (\acs{ISO}/\acs{OSI}-Modell). Im Automobilbereich wurden \acs{AVB} erstmal mit der Bestrebung integriert, Audio- und Videodaten im Infotainmentbereich über Ethernet zu übertragen. Das Ziel war es, für wichtige Datenpakete, eine Latenz von maximal 2ms über 7 Hops zu garantieren \cite{AVB}.
+
+Für detaillierter Erklärungen zu \acs{AVB} kann in \cite{AVBBook} nachgelesen werden. Hier wird unter anderem beschrieben, dass \ac{AVB} bereits die Möglichkeit bietet, Latenzen für Daten mit Echtzeit-Anforderungen zu berechnen. Jedoch wird hierzu immer noch an zusätzlichen Erweiterungen gearbeitet.
+
+\section{\acf{TSN}}\label{ref:TSNGrundlagen}
+Seit dem Jahr 2012 werden die bisherige Themen der Gruppe \acs{AVB} in einer neuen Gruppe unter dem Namen \acf{TSN} weiter entwickelt. Diese beschäftigen sich weiterhin mit der Standardisierung von Erweiterungen zur Erhöhung der Güte des Gesamtsystems. 
+
+Der Grund für den Wechsel von \acs{AVB} auf \acs{TSN} war, dass nicht nur Audio- und Video-Daten versendet werden sollten, sondern auch Kommunikationsdaten, wie z.B. Daten\-pakete für autonomes Fahren, Radardaten oder große Sensordaten. Das Ziel ist es, Echtzeitfähigkeit im Bereich Ethernet-Netzwerke zu ermöglichen. Dies soll mit einer möglichst geringen Latenzzeit von maximal 100$\mu$s auf 5 Hops bei einer Datenrate von 100MBit/s zwischen den Netzwerkgeräten ermöglicht werden \cite{AutomotiveEthernet}. Um das Versenden von Daten mit einer Latenz-Garantie zu ermöglichen, können verschieden Mechanismen verwendet werden. Einer davon wäre Datenpakete mit einer verschiedenen Priorisierungen zu versenden. So könnte für wichtige Daten ein garantiertes Ankommen in der gewünschten Zeit sicher gestellt werden.
+In der folgenden Tabelle \ref{tab:TSN} werden die bisher wichtigsten Standards der \acs{IEEE} zum Thema \acs{TSN} aufgelistet. Diese beinhalten weiter Technologien, wie beispielsweise das erwähnte Priorisieren.
+
+\begin{table}[!htb]
+	\centering
+	\begin{tabularx}{\textwidth}{p{0.165\textwidth}|X}
+		IEEE-Standard & Titel\\
+		\hline \hline
+		802.1AS-Rev & Timing and Synchronization for Time-Sensitive Applications \cite{IEEE802_1AS}\\
+		802.1Qbu & Frame Preemption \cite{IEEE802_1Qbu}\\
+		802.1Qbv & Enhancements for Scheduled Traffic \cite{IEEE802_1Qbv}\\
+		802.1Qca & Path Control and Reservation \cite{IEEE802_1Qca}\\
+		802.1CB & Frame Replication and Elimination for Reliability \cite{IEEE802_1CB}\\
+		802.1Qcc & Stream Reservation Protocol (SRP) Enhancements and Performance Improvements \cite{IEEE802_1Qcc}\\
+		802.1CM & Time-Sensitive Networking for Fronthaul \cite{IEEE802_1CM}\\
+		802.1Qci & Per-Stream Filtering and Policing \cite{IEEE802_1Qci}\\
+		802.1Qca & Path Control and Reservation \cite{IEEE802_1Qca}\\
+		802.1Qcr & Bridges and Bridged Networks Amendment: Asynchronous Traffic
+		Shaping \cite{IEEE802_1Qcr}
+	\end{tabularx}
+	\caption[Aktuell IEEE Standards zu TSN]{Aktuell \acs{IEEE} Standards zu \acs{TSN}}
+	\label{tab:TSN}
+\end{table}
+
+In den folgenden Unterabschnitten werden die wichtigsten Themen von \acs{TSN} detaillierter behandelt, die für ein echtzeitfähiges Netzwerk von besonderer Bedeutung sind. Es wird nicht auf alle Standards komplett eingegangen, da dies den Rahmen der Abhandlung sprengen würde. Bei Bedarf kann dies bei den Unterlagen und den Veröffentlichungen der Gruppe IEEE 802.1 nachgelesen werden. Hier soll ein grundsätzliches Verständnis für die wichtigsten Techniken gegeben werden, um verschiedene Entscheidungen in der Arbeit nachvollziehen zu können.
+
+\subsection{Scheduling und Traffic Shaping}\label{sec:TrafficScheduling}
+Alle teilnehmenden Netzwerkgeräte arbeiten bei der Bearbeitung und Weiterleitung von Datenpaketen nach den gleichen Regeln. \ac{TSN} nutzt dafür größtenteils den IEEE 802.1Qbv Standard. Beim Shaping bezieht man sich hauptsächlich auf zwei Arten von Shapern. Diese werden in den nächsten beiden Unterpunkten kurz erläutert.
+
+\begin{itemize}
+	\item \textbf{\ac{TAS}}
+	\newline
+	Der IEEE802.1Qbv Standard definiert die Technik des \ac{TAS}. Dieser stellt einen zeitlich gesteuerten Weiterleitungsmechanismus dar und ermöglicht die genaue Planung des Datenverkehrs im Netzwerk. Durch den Einsatz des Shapers können Verzögerungen kritischer Pakete durch Querverkehr vermieden werden. Er kann Zeiten bis zu 100µs garantieren. Das Prinzip von \ac{TAS} basiert auf das Zeitscheibenmultiplexing-Verfahren, wodurch der Zugriff auf ein Medium zeitgesteuert abläuft. Der Shaper unterteilt die vorhandenen Zeiten in Intervalle. Hier gibt es sog. kritische- und nicht kritische-Zeitintervalle. Diese sind in verschiedene Warteschlangen unterteilt.\newline
+	Laut Definition im Standard kann ein Port bis zu acht Warteschlangen besitzen. Jede Queue bekommt ein sog. \emph{Gate} (dt. Zeitfenster). Dieses nutzt der \acs{TAS} um nur bestimmte Schlangen in einem Zeitintervall das Versenden von Daten zu erlauben. Die Übertragung kommt nur dann zustande, wenn das Gate geöffnet ist und noch genügend Zeit zur vollständigen Übermittlung des Frames bleibt.  
+	
+	\item \textbf{\ac{CBS}}
+	\newline
+	Der \acl{CBS} ist ebenfalls in IEEE802.1 standardisiert. Die eingesetzte Technik garantiert eine Latenzzeit von 2 Millisekunden über sieben Hops bei einer Datenrate von 100 Mbit/s. Dieser arbeitet mit verschieden klassifizierten Warteschlangen an den ausgehenden Ports. So hat ein Port beispielsweise zwei Queues, eine mit Klasse A und eine weitere. Des Weiteren gibt es einen Verlauf, den sog. Credit (dt. Guthaben). Nach dem Prinzip des \acl{CBS} wird der Port immer Daten aus der Klasse A versenden, wenn der der Credit größer oder gleich 0 ist. Sonst werden Daten aus weiteren Klasse versendet. Der Credit ändert sich nur, wenn Daten aus der zweiten Klassen versendet werden, obwohl in Klasse A noch Paket zum senden vorhanden sind. Der \ac{CBS} bietet Fairness bei der Behandlung von kritischen Daten, z. B.  aus Klasse A, und andern Klassen \cite{CreditBased}.
+\end{itemize}
+ 
+ \newpage
+\subsection{Frame Preemption}
+Der Vollständigkeit halber wird hier noch Frame Preemption kurz erläutert. Es ist ebenfalls ein IEEE Standard \cite{IEEE802_1Qbu} und kann Verzögerungen bei der Latenzzeit von Paketen reduzieren. Frame Preemption ist eine weiter Möglichkeit Latenzzeiten zu senken. Zum aktuellen Zeitpunkt wird es aber noch nicht von den Endgeräten im Fahrzeug unterstützt. 
+
+Um Frame Preemption zu ermöglichen wird die Übertragung von weniger kritischen Paketen für kritische Pakete unterbrochen. Die unkritischen Datenpakete werden erst weiter versendet, wenn alle kritischen vollständig verschickt wurden. Frame Preemtion wird vor allem in Kombination mit dem \acl{TAS} verwendet. Hiermit können sog. Überlast-Situationen vermieden werden, bei denen es zum Überlauf der Warteschlangen im Switch kommen kann. Bei diesem Verfahren wird die sichere Versendung von Daten mit der gegebenen Latenz-Anforderung garantiert. Pakete mit einer großen Latenzzeit können innerhalb der nicht kritischen Zeitintervalle des \acs{TAS} versendet werden. Ein übermäßiges Senden von höher priorisierten Daten kann trotzdem zum Datenstau bei den Niedrigeren führen.
+
+\subsection{\acl{PSFP}}\label{sec:Filter}
+\acf{PSFP} wurd unter der IEEE 802.1Qci \cite{IEEE802_1Qci} standardisiert. Es kümmert sich um die Überwachung der Datensteams im System. \ac{PSFP} definiert mehrere Filter- und Überwachungsfunktionen die an den ein- und ausgehenden Ports der Netzwerkgeräte konfiguriert werden können. In dieser Arbeit wird sich nur auf das Filtern der Datenströme bezogen. Hierzu gibt es die \ac{PSFP}-Funktionen \emph{Ingress filtering, Frame filtering und Engress filterning} \cite{QIC}. Beim Filtering geht es in der Regel immer darum ein- und ausgehende Daten nach vordefinierten Regeln zu untersuchen. Falls bei einer Überprüfung eine Diskrepanz zwischen Soll- und Ist-Wert festgestellt wird, können Maßnahmen zur Behebung, oder der weitere Umgang mit den korrupten Daten eingeleitet werden. Der Punkt Ingress filtering spielt in der Netzwerktechnologie eine wichtige Rolle und wird deshalb in dieser Arbeit noch detaillierter in Abschnitt \ref{sec:Ingress} behandelt.
+
+\newpage

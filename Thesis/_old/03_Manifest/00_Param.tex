@@ -1,0 +1,163 @@
+\newpage  
+\section{Manifest-Parameter}\label{sec:ManifestParam}
+Eine Applikation hat verschiedene Anforderungen an ihre Netzwerkumgebung, die durch Parameter definiert werden. 
+Im ersten Schritt werden gängige Netzwerk-Parameter anhand der in den Kapitel \ref{sec:Grundlagen} definierten Werte und Techniken, insbesondere im Hinblick auf die Anforderungen an Echtzeitsystem und der Schutzziele eines Systems aus Abschnitt \ref{sec:Schutzziele} ausgewählt. Diese mussten im nächsten Schritt mit den Anforderungen aus dem vorherigen Punkt \ref{sec:NeuesNetz} vereinigt werden. Nur wenn alle Punkte erfüllt werden, kann ein Netzwerk überhaupt im Hinblick auf Sicherheit weiter behandelt werden. Alle im Manifest definierten Parameter wurden im laufe der Abschlussarbeit erschlossen und anhand der Anforderungen spezifiziert. Hierzu wurden verschieden Quellen, wie Literatur und Experten aus dem Netzwerksegment bei der Continental Automotive GmbH konsultiert.
+
+Der letzte Schritt in der Parameterdefinition ist das weit möglichste Abstrahieren der netzwerkspezifischen Eigenschaften. Hierdurch konnten einige wenige Parameter definiert werden, von denen wiederum der Netzwerkmanager (beschrieben in Kapitel \ref{sec:Netzwerkmanager})  alle für eine Konfiguration wichtigen Parameter ableiten kann. Dies ermöglicht eine Entwicklung einer Applikation, unabhängig von einer konkreten Netzwerktechnologie. Somit können auch spätere Änderungen in der Netzwerkinfrastruktur vorgenommen werden, ohne die Anwendungen überarbeiten zu müssen. Auf diesem Weg erreicht man den Schritt von einem normalen homogenen Netzwerk zu einem heterogenen Netzwerk. Der Unterschied ist in erster Linie dass, anders als bei einem homogenen Netz, auch unterschiedliche Softwaresysteme untereinander kommunizieren können \cite{HeterogenesNetzwerk}.
+
+Jeder Entwickler legt für seine Anwendung die gewünschten Parameter fest, welche sich im Manifest befinden. Um einen fehlerfreien Ablauf zu garantieren, sind diese, wie schon erwähnt, lediglich abstrahierte Parameter die später softwareseitig in die konkret benötigten Parameter aufgeschlüsselt werden. So können beispielsweise aus einer Latenz Parameter zur Konfiguration, des in Kapitel \ref{sec:TrafficScheduling} Traffic Shaping, abgeleitet werden. Das entstandene File wird als Applikationsmanifest bezeichnet und ist im Format \acf{JSON}.  \acs{JSON} ist ein Datenformat, welches zum Datenaustausch zwischen Anwendungen verwendet wird. Dies wurde im laufe dieser Arbeit definiert, da es mehrere Eigenschaften besitzt, welche für den Anwendungsfall der Informationsübermittlung von Vorteil sind. Einer davon ist, das es für den Entwickler einfach les- und schreibbar, was eine einfache Bedienung verspricht. Ein weiterer ist die strukturelle Form von dieser Sprache. Sie lässt in einfacher Form komplexen Strukturen abbilden. Dies ermöglicht es beispielsweise ein Array oder eine Liste an geschachtelten Elementen zu übermitteln \cite{JSON}. 
+
+\newpage
+
+Ein Vorteil dabei ist es, wenn eine Applikation mehrere verschieden Arten von Nachrichten übermitteln muss. Wäre diese Art der Schachtelung nicht möglich, könnte eine Anwendung immer nur genau einen Kommunikationspartner haben und eine Art von Daten versenden. 
+
+Tabelle \ref{tab:Manifest} enthält die Parameter, welche aus Netzwerksicht gesetzt werden müssen, um eine Konfiguration der gesamten Kommunikationsstrecke zu generieren. In den folgenden Unterabschnitten werden diese näher erläutert.
+\begin{table}[!htb]
+	\centering
+	\begin{tabularx}{0.85\textwidth}{p{0.20\textwidth} | p{0.70\textwidth} }
+		Parameter & Spezifikation \\
+		\hline\hline
+		name & Name der Applikation im System \\
+		id & Eindeutige Identifikationsnummer  \\
+		groupId & Eindeutige Gruppenidentifikationsnummer \\
+		domain & Domain einer Anwendung \\
+		cyclic & Zyklisch- oder Event-gesteuerte Anwednung \\
+		timesync & Zeitsynchronisation erforderlich \\
+		maxLatency & Latenzzeit einer Nachricht\\
+		minLatency & Unter Grenze der Latenzzeit (Jitter)\\
+		messageSize & Größe der zu sendende Daten \\
+		frequency & Wiederholungsgeschwindigkeit einer Nachricht\\
+		integrity & Korrektheit der zu sendenden Daten\\
+		\end{tabularx}
+	\caption[Übersicht der Manifest-Parameter]{Übersicht der Manifest-Parameter}
+	\label{tab:Manifest}
+\end{table}
+
+\subsection{Identifikation und Gruppen}
+Jede Anwendung besitzt eine \ac{ID}, anhand dieser sie eindeutig identifiziert werden kann. Dies wird in dem Parameter \emph{id} hinterlegt. In dem Konzept der Erweiterbarkeit des Netzwerkes muss diese \ac{ID} weltweit eindeutig hinterlegt werden, um eine Anwendung unmissverständlich einer Herkunft zuordnen zu können. Vor allem wenn es darum geht Fehler im System zu finden, ist eine eindeutige Zuordnung wichtig, da sich ein \emph{Bugfix} der Anwendung als schwierig herausstellen kann. Dieser muss nicht nur lokal im System erfolgen, sondern weltweit für alle Fälle, in denen jene Applikation zum Einsatz kommt. 
+
+\newpage
+
+Neben der Eliminierung der Fehlermöglichkeit einer Maskierung einer Nachricht mit einer falschen \ac{ID}, ist die Regelung der Kommunikation zwischen den Applikationen innerhalb eines Netzwerkes ein positiver Nebeneffekt einer eindeutigen \ac{ID}. Das Format der \ac{ID} ist definiert durch den Prefix \emph{id-} und einer darauf folgenden fünfstelligen Nummer, z. B. \emph{id-12345} und muss einmalig weltweit sein sein. Der Netzwerkmanager erhält die \ac{ID} beim Start der Anwendungen. Anhand dieser können Kommunikationsstrecken aufgebaut werden.\newline
+Da es auch Applikationen gibt, die gemeinsam benachrichtigt werden müssen, existiert eine Gruppenidentifikationsvariable. Angelehnt an das Format der \ac{ID}, hat die Gruppen-ID die Form \emph{group-12345}. Anhand dieser können Multicast-Nachrichten an alle Anwendungen einer Gruppe gesendet werden. 
+Ebenso kann eine Domain angeben werden, um eine Applikation eindeutig zuordnen zu können. Dies kann möglich sein, falls die Anwendung in mehren Subnetzen Nachrichten versenden muss, so kann diese einer Kommunikation eindeutig zugeordnet werden
+
+\subsection{Sender und Empfänger}
+Durch die eindeutige \ac{ID} einer Anwendung können Regeln für ein- und ausgehende Nachrichten definiert werden. Da eine Anwendung Unicast- und Multicast-Nachrichten an einen Empfänger senden kann, oder auch von ihm empfängt, müssen nachrichtenspezifische Parameter vergeben werden. So kann die maximale Latenzzeit bei Nachricht \emph{N1} vom Sender \emph{id-11111} zu Empfänger \emph{id-11112} anders sein, als die der Nachricht \emph{N2} zu Empfänger \emph{id-11113}. Die maximale Latenz eines Datenpakets definiert auch, wie lange dieses gültig ist. So hat Nachricht \emph{N1} eine Gültigkeitsdauer von 200ms. Da Sender und Empfänger verschiedene Anforderungen an die Latenz haben können, müssen immer beide Seiten betrachtet werden und die geringere Zeit wird für die Kommunikation gesetzt. 
+
+\singlefigurePlus{\label{fig:Nachrichtenspezifische Parameter}}{99_IMG/03_manifest/Nachrichten.png}{Nachrichtenparameter Latenz}
+
+\newpage
+
+Da \emph{id-11111} die Nachricht an \emph{id-11112} mit geringer Latenz sendet als benötigt, wird dies für \emph{N1} als Wert gesetzt. Bei der Nachricht an \emph{id-11113} wird eine niedrigere Latenz vom Empfänger erwartet, als \emph{id-11111} sendet, somit muss die Latenzzeit der Nachricht \emph{N2} auf 400\,ms angepasst werden.
+
+\subsection{Arten der Nachrichten}\label{sec:ArtNachricht}
+Es gibt im System zwei verschiedene Arten von Nachrichten. Dies werden je nach Typ unter dem Parameter \emph{cyclic} angeben. 
+\begin{itemize}
+	\item \textbf{Zyklischer Nachrichtenaustausch}
+	\newline Nachrichten die in fest definierten Zeitabständen von einer Applikation gesendet werden, bezeichnet man als zyklisch. Die Abstände werden mit der Frequenz einer Nachricht angegeben. Wenn eine zyklische Laufzeit angegeben wird, muss zusätzlich im System eine laufende Paketnummer für gesendete Daten vergeben werden, um Fehler wie wiederholte Nachrichten und vertauschte Reihenfolge der Pakete zu vermeiden.
+	\item \textbf{Event-gesteuerter Nachrichtenaustausch}
+	\newline Sendet eine Applikation nur bei bestimmten Ereignissen eine Nachricht, wird dies als event-gesteuert bezeichnet. Genau so wie eine zyklische Nachricht, kann eine event-gesteuerte Nachricht auch eine Frequenz besitzen in der sie wiederholt auftritt. Der größe Unterschied liegt im Startzeitpunkt der Nachrichten. 
+\end{itemize}
+
+\subsection{Datenrate}\label{sec:Datenrate}
+Eine Applikation benötigt einen bestimmten Anteil der  einer Leitung im Netzwerk. Die benötigte Datenrate kann mittels der beiden folgenden Parameter errechnet werden.
+\begin{itemize}
+	\item \textbf{Nachrichtengröße}
+	\newline Die Nachrichtengröße definiert die Größe einer zu sendenden Nachricht an einen anderen Teilnehmer im System. Diese wird in \emph{byte} unter der Variable \emph{messageSize} abgelegt.
+	\item \textbf{Frequenz einer Nachricht}
+	\newline Jede Nachricht wird in bestimmten Abständen nacheinander versendet. Dies wird unter \emph{frequency} in Nachrichten pro Sekunde angegeben. Wie bereits in Abschnitt \ref{sec:ArtNachricht} beschrieben, gibt es jedoch auch Nachrichten ohne Frequenz, da diese nur einmalig gesendet werden. Hierbei ist die Frequenz mit dem Wert eins zu belegen.  
+\end{itemize}
+
+Die Bandbreite pro Nachricht errechnet sich somit anhand der Formel:
+\begin{align}
+	Bandbreite &= Nachrichtengroesse * Frequenz
+\end{align}
+Eine Applikation kann mehrere ausgehende Nachrichten versenden. Diese werden gesondert voneinander betrachtet um ein Aussage über die benötigte Bandbreite zu treffen. Im Manifest werden die verschiedenen Nachrichten einzeln angegeben und besitzen alle ihre eigenen Nachrichtenparameter, wie die \ac{ID}, den Empfänger, die Nachrichtengröße und die Frequenz. Falls eine Anwendung auch event-gesteuerte Einzelnachrichten sendet, empfiehlt es sich, einen Anteil der Bandbreite der Leitung frei zu halten. Wird dies nicht gemacht, kann es zu Datenstau und den daraus resultierenden Paketverlust kommen. Dies gilt es zu berücksichtigen und zu vermeiden. Daraus wird eine ausreichend genaue Abschätzung der benötigten Datenrate ermöglicht.
+\newline
+Wenn mehrere Anwendungen auf einer \ac{ECU} laufen, kann anhand ihrer Einzelbandbreiten die gesamte Auslastung einer Leitung berechnet werden. Mithilfe der Gesamtauslastung kann die benötigte Bandbreite einer Applikation zugesichert werden, damit diese auf einem Steuergerät laufen kann. 
+
+\subsection{Latenz und Jitter}\label{sec:RechnungJitter}
+Die Latenzzeit (Kapitel \ref{sec:Latenz}) wird angegeben mit dem Parameter \emph{maxLatency}. Dieser gibt, wie bereits beschrieben, die maximale Dauer bis zur Ankunft einer Nachricht im System an.
+Um die gewünschte Zeit zu erreichen, müssen Technologien wie Scheduler und Traffic Shaper (Kapitel \ref{sec:TrafficScheduling}) eingesetzt werden. So können aus der Latenz benötigte Parameter abgeleitet werden, wie beispielsweise nach welchen Kriterien der Shaper aus dem Traffic Shaping arbeiten soll. Dieser kann in den je nach Switchhersteller individuell definiert werden. Je kleiner die geforderte Latenzzeit, desto strenger muss der Shaper eingestellt sein, um \emph{Burts} (dt. Ausbrüche im Datenverkehr) zu vermeiden.
+
+Kann ein System die geforderte zeitliche Anforderung einer Anwendung nicht einhalten, kann diese Applikation nicht in dem Netzwerk betrieben werden. Aus diesem Grund sollte bereits bei der Entwicklung einer Applikation die gegebenen Eigenschaften wie die Topologie des Netzwerkes und auch die Leistungsfähigkeit der Endgeräte des Systems betrachtet werden.
+
+\newpage
+
+Wie bereits in Abschnitt \ref{sec:Jitter} erwähnt, wird die Schwankung (eng. Jitter) als die maximale Abweichung der Ankunftszeit einer Nachricht bezeichnet. Diese kann sowohl positiv als auch negativ sein, da es ein Zeitfenster mit einer oberen und unteren Schranke angibt. Die Differenz zwischen ober und unter Grenze ergibt den Jitter. Im Manifest wird die Latenz (\emph{maxLatency}) als obere Schranke benutzt. Die untere Schranke ist im Parameter \emph{minLatency} definiert.
+Das Zeitfenster des Jitters berechnet sich mit der Formel:
+\begin{align}
+	Jitter &= |maximale Latenz - minimale Latenz|
+\end{align}
+Das errechnete Zeitfensters gibt an, in welchem zeitlichen Bereich die Nachricht beim Empfänger ankommen muss.
+Ist keine minimale Latenz angegeben, reicht es lediglich die maximale Latenz als Obergrenze der Ankunftszeit zu setzen. Dies bedeutet, dass eine Nachricht lediglich innerhalb einer bestimmten Zeit ankommen muss. Es ist jedoch egal ob sie früher ankommt. Durch Sicherstellung, das der Parameter Jitter eingehalten wird, kann ein zu frühes Ankommen der Daten verhindert werden, da hier eine Untergrenze für das eintreffen einer Nachricht existiert.
+
+\newpage
+\subsection{Zeitsynchronisation}\label{sec:Zeitsync}
+Die Eigenschaft Zeitsynchronisation (eng. time synchronisation) ist notwendig um einen gemeinsamen Zeitbasis über verschiedene Anwendungen zu garantieren. Die Synchronisation der Applikationen kann über unterschiedliche Mechanismen erfolgen. In dieser Arbeit wird auf \ac{gPTP} eingegangen, welches unter der IEEE 802.1AS \cite{IEEE802_1AS} veröffentlicht wurde. \ac{gPTP} nutzt Teile von \ac{PTP} welches ebenfalls von der IEEE unter der Nummer 1588 standardisiert \cite{PTPSync}. Das Prinzip von \ac{gPTP} stützt sich auf die Synchronisierung aller sich im System b befindenden Uhren an deiner Master Clock (dt. Uhr). Welche Uhr die Master Uhr ist wird in der Regel durch den \acf{BMC} Algorithmus ermittelt. Hierbei übermitteln alle Teilnehmer an der Zeitsynchronisation die Genauigkeit ihre internen Uhr. Die genauest dieser Uhren wird dann die neue \acl{BMC}\cite{AutomotiveEthernet}. 
+
+Generell gibt es vier Level an Uhren, die im \ac{gPTP} Standard festgelegt sind. Im Manifest werden zwei dieser Level umgesetzt. Ein zusätzlich eingeführtes Level 0 wird in dieser Arbeit als Deaktivierung der Zeitsynchronisation genutzt \cite{BMC}. Dies kann gesetzt werden wenn zeit-unkritische Daten, wie z. B. Updates für das Fahrzeug in einer Werkstat, im System versendet werden. Level eins und zwei geben den Typ der Uhr an. Level drei ist laut Standard für IEEE 1588 reserviert und wird hier nicht mit umgesetzt. Dies entspricht auch dem \emph{Master und Slave Port} Prinzip aus der Literatur \cite{AutomotiveEthernet}.
+
+\begin{itemize}
+	\item Level 0: Keine Zeitsynchronisation erforderlich.
+	\item Level 1: Interne Uhr der \ac{ECU} auf der die Applikation laufen soll, muss so genau sein, das im Falle eines \ac{BMC} Algorithmus diese als neue Master Clock verwendet werden kann.
+	\item Level 2: Interne Uhr der \ac{ECU} synchronisiert sich auf eine Uhr aus Level 1 und sollte keine Master Clock werden.
+	\item Level 3: Reserviert für IEEE 1588
+\end{itemize}
+
+Um eine Genauigkeit einer Anwendung mit anzugeben können verschiedene Uhrentypen angegeben werden. Die für die Arbeit wichtigen, sind in der Tabelle \ref{tab:clock} aufgelistet. Es wird ebenfalls mit angegeben in welches Level dies Uhren fallen. Generell sollte Level eins nur verwendet werden, wenn ein Anspruch auf sehr hohe Genauigkeit besteht oder die Anwendung der Master für andere Uhren im System werden soll.
+
+\begin{table}[!htb]
+	\centering
+	\begin{tabularx}{0.85\textwidth}{p{0.1\textwidth} | p{0.58\textwidth} | p{0.2\textwidth}}
+		Uhrentyp & Spezifikation & Level\\
+		\hline\hline
+		ATOM & Zeit von kalibrierter Atomuhr, auf 25ns genau & Level 1 \\
+		GPS & Zeit von GPS Uhr, auf 100ns genau & Level 1 \\
+		ATOM & Zeit synchronisiert auf eine Atomuhr Level 1, 
+		\newline auf 100ns genau & Level 2 \\
+		GPS & Zeit synchronisiert auf eine GPS Uhr Level 1, 
+		\newline auf 100ns genau & Level 2 \\
+		NTP & Zeit ist nach der Synchronisation auf 50ms genau & Level 2 \\
+		HAND & Zeit ist nach der Synchronisation auf 10s genau & Level 2 \\
+	\end{tabularx}
+	\caption[Genauigkeit der Uhren im Netzwerk]{Genauigkeit der Uhren im Netzwerk \cite{BMC}}
+	\label{tab:clock}
+\end{table}
+
+\newpage
+
+Im Manifest werden die gewünschten Einstellungen durch Konkatenation der einzelnen Angaben abgebildet. Dies wird im Parameter \emph{timesync}, nach dem Schema Prefix=Level und Sufix=Uhrentyp, abgebildet. So wird z. B. eine Anwendung die nur eine Genauigkeit von maximal 100ns und keinen Anspruch darauf legt, selbst eine Master Clock zu werden, in Form des Stringes \emph{timesync = 2ATOM} angegeben.
+
+
+
+%In diesem Standard sind fünf Arten von Uhren definiert, anhand derer eine Zeitsynchronisation stattfinden kann. Im Automotiv-Bereich werden lediglich zwei der fünf verwendet. 
+%
+%\begin{itemize}
+%	\item \textbf{Ordianary Clock}
+%	\newline Diese Uhr wird als die \enquote{einfache Uhr} bezeichnet und kann sowohl als Master Clock, als auch Salve Clock im Netzwerk eingesetzt werden. Sie besitzt eine physische Schnittstelle, die zum Senden und Empfangen von Ereignissen verwendet wird. Eine \oclock im \enquote{Mastermode} kann ihre Zeit frei definieren oder auch anhand eines Zeitservers synchronisieren (z.B. GPS Zeiten). Im \enquote{Slavemode} folgt sie den Zeitdaten eines anderen Masters im System.
+%
+%	\item \textbf{Boundary Clock}
+%	\newline Diese Uhr wird in der Regel als Slave einer Master Clock verwendet. Sie ist oft in Netzwerkkomponenten integriert, z.B. in Switchen oder Repeatern. Dort kann die Uhr Zeitdaten als Slave empfangen und als Masterzeit weiterleiten. Sie besitzt, anders als die \oclock, mehrere physische Schnittstellen. Jeder dieser Ports ist wie eine \enquote{einfache Uhr} aufgebaut und kann auch so verwendet werden. 
+%\end{itemize}
+%Die Genauigkeit einer Uhr wird anhand vordefinierter Hexadezimalwerte spezifiziert. Diese werden bei der Konfiguration von einer Uhr mit angegeben, um die gewünschte Exaktheit zu erreichen \cite{PTPSync}.
+%
+%
+%
+%Es können auch mehrere Uhren und Genauigkeiten für eine Anwendung definiert werden. Dies ist nötig, wenn eine Applikation an verschiedene Empfänger Daten übermittelt, die jedoch alle andere Anforderungen an Zeitgenauigkeit haben. Vor allem der zuvor erwähnte Time-aware Shaper (Kapitel \ref{sec:TrafficScheduling}) benötigt die exakte Zeit um auf seine Latenzzeit-Garantie zu kommen. 
+%
+%Die Angabe erfolgt im Manifest mittels eines vierstelligen Strings:
+%\begin{itemize}
+%	\item 1. Stelle: 0 = deaktiviert, 1 = aktiv
+%	\item 2. Stelle: 0 = Slave, 1 = Master
+%	\item 3. und 4. Stelle: Genauigkeit der Zeitdaten 
+%\end{itemize}
+
+\subsection{Sicherstellung der Authentizität der Daten}
+Bei der Sicherstellung der Echtheit der Daten, gilt es die in Kapitel \ref{sec:Schutzziele} erwähnten Schutzziele zu gewährleisten. Dies kann im aktuellen Netzwerk nur anhand von \acl{MACsec} umgesetzt werden, da nur dieser Mechanismus in den verwendeten Switchen implementiert ist. \acs{MACsec} bietet die in Abschnitt \ref{sec:MacSec} definierte Funktionalität, welche beispielsweise eine Integrität der Daten sicher stellt. Auch eine Authentifizeirung der Kommunikationspartner ist bereits anhand der \ac{MAC} Adressen möglich, da diese im System eindeutig sein müssen.
+Die weiteren genannten Schutzziele können mit dieser Technologie noch nicht erreicht werden. Diese müssen im Nachgang noch spezifisch betrachtet werden, um die Machbarkeit im jeweiligen System sicherzustellen. Eine Möglichkeit Vertraulichkeit zu gewährleisten, wäre eine Verschlüsselung der Kommunikationsstrecke. Dies ist jedoch nur eine Möglichkeit und wird nicht weiter in dieser Arbeit verfolgt.
+
+Der Parameter \emph{integrity} ist lediglich eine boolische Variabel und gibt dem Entwicklern die Möglichkeit die Kommunikation zwischen den Endgräten zu überwachen. Ist dieses sog. Flag gesetzt, muss mit Performance-Einbusen im System gerechnet werden, da es einerseits Zeit kostete, aber auch Rechenleitung in den Netzwerkgräten.
+
+

@@ -1,0 +1,322 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0043)http://www.ieee802.org/1/pages/802.1bu.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+ <meta name="description" content="IEEE 802.1">
+ <meta name="keywords" content="IEEE, 802, 802.1, LAN, MAN, bridging, VLAN, virtual LAN, MAC, LLC">
+ <!-- Start of include file inc/head.html -->
+ <meta name="Generator" content="Neil&#39;s Web Site Generator, V2.1.2, built Sun Mar 12 17:27:15 EDT 2017">
+ <meta name="MSSmartTagsPreventParsing" content="TRUE">
+ 
+ <link rel="StyleSheet" type="text/css" href="./IEEE 802.1_ 802.1Qbu - Frame Preemption_files/8021.css">
+<!-- End of include file inc/head.html -->
+ <title>IEEE 802.1: 802.1Qbu - Frame Preemption</title>
+ <link rel="alternate" type="application/rss+xml" title="802.1Qbu RSS feed" href="http://www.ieee802.org/1/pages/802.1bu-rss.xml">
+</head>
+
+<!-- Start of include file inc/body-start.html -->
+<body bgcolor="white">
+
+<div id="bodycontainer">
+
+<!-- End of include file inc/body-start.html -->
+<a href="http://www.ieee802.org/1/pages/802.1bu-rss.xml"><img src="./IEEE 802.1_ 802.1Qbu - Frame Preemption_files/rss_feed.gif" alt="RSS feed" style="border:0;float:right"></a>
+<!-- Start of include file inc/body-header.html -->
+<table width="100%">
+<tbody><tr>
+<td width="10%"><a href="http://www.ieee.org/"><img src="./IEEE 802.1_ 802.1Qbu - Frame Preemption_files/small-ieee.gif" align="left" alt="" border="0"></a></td>
+<td width="80%"><center><font size="-1">
+[<a href="http://www.ieee802.org/1/">Home</a>] .
+[<a href="http://www.ieee802.org/1/pages/new.html">What's New?</a>] .
+[<a href="http://www.ieee802.org/1/email-pages/ballots.html">Active Ballots</a>] .
+[<a href="http://www.ieee802.org/1/pages/minutes.html">Minutes</a>] .
+[<a href="http://www.ieee802.org/1/meetings/">Meetings</a>] .
+[<a href="http://www.ieee802.org/1/maint.html">Maintenance</a>] .
+[<a href="http://www.ieee802.org/1/pages/interpretations.html">Interpretations</a>] .
+[<a href="http://www.ieee802.org/1/files/public/">Public Docs</a>] .
+[<a href="http://www.ieee802.org/1/files/private/">Committee Docs</a>]
+<br>
+[<a href="http://www.ieee802.org/1/pages/lasg.html">Local Address Study Group</a>] .
+[<a href="http://www.ieee802.org/1/files/public/802_architecture_group">802 Architecture Group</a>] .
+[<a href="http://www.ieee802.org/1/pages/dcbridges.html">Data Center Bridging Task Group</a>]
+[<a href="http://www.ieee802.org/1/pages/tsn.html">Time-Sensitive Networking Task Group</a>]
+<br>
+[<a href="http://www.ieee802.org/1/private/email2/">Email</a>] .
+[<a href="http://www.ieee802.org/1/private/email/">Ancient Email</a>] .
+[<a href="http://www.ieee802.org/1/pages/MIBS.html">802.1 MIBs</a>] .
+[<a href="http://www.ieee802.org/1/pages/OIDS.html">802.1 OIDs</a>] .
+[<a href="http://www.ieee802.org/">IEEE 802</a>] .
+[<a href="https://development.standards.ieee.org/pub/active-pars">IEEE 802 PARs</a>]
+<br>
+<a href="http://www.ieee802.org/1/pages/tsn.html">TSN</a>: 
+[<a href="http://www.ieee802.org/1/pages/802.html">802</a>] .
+[<a href="http://www.ieee802.org/1/pages/802a.html">802a</a>] .
+[<a href="http://www.ieee802.org/1/pages/802b.html">802b</a>] .
+[<a href="http://www.ieee802.org/1/pages/802.1D.html">802.1D</a>] .
+[<a href="http://www.ieee802.org/1/pages/802.1D-2003.html">802.1D-2004</a>] .
+[<a href="http://www.ieee802.org/1/pages/802.1G.html">802.1G</a>] .
+[<a href="http://www.ieee802.org/1/pages/802.1h-rev.html">802.1H-REV</a>] .
+[<a href="http://www.ieee802.org/1/pages/802.1Q.html">802.1Q</a>] .
+[<a href="http://www.ieee802.org/1/pages/802.1Q-2014.html">802.1Q-2014</a>] .
+[<a href="http://www.ieee802.org/1/pages/802.1s.html">802.1s</a>] .
+[<a href="http://www.ieee802.org/1/pages/802.1v.html">802.1v</a>] .
+[<a href="http://www.ieee802.org/1/pages/802.1w.html">802.1w</a>] .
+[<a href="http://www.ieee802.org/1/pages/802.1ab.html">802.1AB-2005</a>] .
+[<a href="http://www.ieee802.org/1/pages/802.1AB-2009.html">802.1AB-2009</a>] .
+[<a href="http://www.ieee802.org/1/pages/802.1ac.html">802.1AC-2012</a>] .
+[<a href="http://www.ieee802.org/1/pages/802.1AC-2016.html">802.1AC-2016</a>] .
+[<a href="http://www.ieee802.org/1/pages/802.1ad.html">802.1ad</a>] .
+[<a href="http://www.ieee802.org/1/pages/802.1ag.html">802.1ag</a>] .
+[<a href="http://www.ieee802.org/1/pages/802.1ah.html">802.1ah</a>] .
+[<a href="http://www.ieee802.org/1/pages/802.1aj.html">802.1aj</a>] .
+[<a href="http://www.ieee802.org/1/pages/802.1ak.html">802.1ak</a>] .
+[<a href="http://www.ieee802.org/1/pages/802.1ap.html">802.1ap</a>] .
+[<a href="http://www.ieee802.org/1/pages/802.1aq.html">802.1aq</a>] .
+[<a href="http://www.ieee802.org/1/pages/802.1aw.html">802.1Qaw</a>] .
+[<a href="http://ieee802.org/3/axay/">802.1AX-2008</a>] .
+[<a href="http://www.ieee802.org/1/pages/802.1ay.html">802.1Qay</a>] .
+[<a href="http://www.ieee802.org/1/pages/802.1bc.html">802.1Qbc</a>] .
+[<a href="http://www.ieee802.org/1/pages/802.1be.html">802.1Qbe</a>] .
+[<a href="http://www.ieee802.org/1/pages/802.1bf.html">802.1Qbf</a>] .
+[<a href="http://www.ieee802.org/1/pages/802.1axbk.html">802.1AXbk</a>] .
+[<a href="http://www.ieee802.org/1/pages/802.1bp.html">802.1Qbp</a>] .
+[<a href="http://www.ieee802.org/1/pages/802.1AX-2014.html">802.1AX-2014</a>] .
+[<a href="http://www.ieee802.org/1/pages/802.1AX-rev.html">802.1AX-Rev</a>] .
+[<a href="http://www.ieee802.org/1/pages/802.1bz.html">802.1Qbz</a>] .
+[<a href="http://www.ieee802.org/1/pages/802.1ca.html">802.1Qca</a>]
+<br>
+[<a href="http://www.ieee802.org/1/pages/802.1as.html">802.1AS</a>] .
+[<a href="http://www.ieee802.org/1/pages/802.1AS-rev.html">802.1AS-Rev</a>] .
+[<a href="http://www.ieee802.org/1/pages/802.1at.html">802.1Qat</a>] .
+[<a href="http://www.ieee802.org/1/pages/802.1av.html">802.1Qav</a>] .
+[<a href="http://www.ieee802.org/1/pages/802.1ba.html">802.1BA</a>] .
+[<a href="http://www.ieee802.org/1/pages/802.1bu.html">802.1Qbu</a>] .
+[<a href="http://www.ieee802.org/1/pages/802.1bv.html">802.1Qbv</a>] .
+[<a href="http://www.ieee802.org/1/pages/802.1cb.html">802.1CB</a>] .
+[<a href="http://www.ieee802.org/1/pages/802.1cc.html">802.1Qcc</a>] .
+[<a href="http://www.ieee802.org/1/pages/802.1ch.html">802.1Qch</a>] .
+[<a href="http://www.ieee802.org/1/pages/802.1cm.html">802.1CM</a>] .
+[<a href="http://www.ieee802.org/1/pages/802.1cn.html">802.1Qcn</a>] .
+[<a href="http://www.ieee802.org/1/pages/802.1cp.html">802.1Qcp</a>] .
+[<a href="http://www.ieee802.org/1/pages/802.1cr.html">802.1Qcr</a>]
+<br>
+Security:
+[<a href="http://www.ieee802.org/1/pages/802.1x-2001.html">802.1X-2001</a>] .
+[<a href="http://www.ieee802.org/1/pages/802.1x-2004.html">802.1X-2004</a>] .
+[<a href="http://www.ieee802.org/1/pages/802.1x-2010.html">802.1X-2010</a>] .
+[<a href="http://www.ieee802.org/1/pages/802.1ae.html">802.1AE</a>] .
+[<a href="http://www.ieee802.org/1/pages/802.1af.html">802.1af</a>] .
+[<a href="http://www.ieee802.org/1/pages/802.1ar.html">802.1AR</a>] .
+[<a href="http://www.ieee802.org/1/pages/802.1aebn.html">802.1AEbn</a>] .
+[<a href="http://www.ieee802.org/1/pages/802.1aebw.html">802.1AEbw</a>] .
+[<a href="http://www.ieee802.org/1/pages/802.1xbx.html">802.1Xbx</a>] .
+[<a href="http://www.ieee802.org/1/pages/802.1arce.html">802.1ARce</a>] .
+[<a href="http://www.ieee802.org/1/pages/802.1aecg.html">802.1AEcg</a>] .
+[<a href="http://www.ieee802.org/1/pages/802.1ck.html">802.1Xck</a>] .
+[<a href="http://www.ieee802.org/1/pages/802e.html">802E</a>]
+<br>
+<a href="http://www.ieee802.org/1/pages/dcbridges.html">DCB</a>: 
+[<a href="http://www.ieee802.org/1/pages/802.1au.html">802.1Qau</a>] .
+[<a href="http://www.ieee802.org/1/pages/802.1az.html">802.1Qaz</a>] .
+[<a href="http://www.ieee802.org/1/pages/802.1bb.html">802.1Qbb</a>] .
+[<a href="http://www.ieee802.org/1/pages/802.1bg.html">802.1Qbg</a>] .
+[<a href="http://www.ieee802.org/1/pages/802.1bh.html">802.1Qbh</a>] .
+[<a href="http://www.ieee802.org/1/pages/802.3bd.html">802.3bd</a>] .
+[<a href="http://www.ieee802.org/1/pages/802.1br.html">802.1BR</a>] .
+[<a href="http://www.ieee802.org/1/pages/802.1cd.html">802.1Qcd</a>] .
+[<a href="http://www.ieee802.org/1/pages/802.1cj.html">802.1Qcj</a>] .
+[<a href="http://www.ieee802.org/1/pages/802c.html">802c</a>] .
+<a href="https://mentor.ieee.org/omniran/bp/StartPage">OmniRAN</a>: 
+[<a href="http://www.ieee802.org/1/pages/802.1cf.html">802.1CF</a>] 
+</font></center></td>
+<td width="10%"><a href="http://www.ieee802.org/"><img src="./IEEE 802.1_ 802.1Qbu - Frame Preemption_files/small-802.gif" align="right" alt="" border="0"></a></td>
+</tr>
+</tbody></table>
+<hr>
+<!-- End of include file inc/body-header.html -->
+
+<center><img src="./IEEE 802.1_ 802.1Qbu - Frame Preemption_files/802.1Qbu.gif" alt=""><br>
+<h1>802.1Qbu - Frame Preemption</h1></center>
+<p class="middle0">
+The full title of this PAR is "Standard for Local and Metropolitan Area Networks-Media Access Control (MAC) Bridges and Virtual Bridged Local
+Area Networks - Amendment: Frame Preemption".
+</p>
+
+<p class="middle0">
+This amendment specifies procedures, managed objects, and protocol
+extensions that:
+</p><ul class="middle0">
+<li>Define a class of service for time-critical frames that requests
+the transmitter in a bridged Local Area Network to suspend the
+transmission of a non-time-critical frame, and allow for one or
+more time-critical frames to be transmitted. When the
+time-critical frames have been transmitted, the transmission of
+the preempted frame is resumed. A non-time-critical frame
+could be preempted multiple times.</li>
+<li>Provide for discovery, configuration, and control of
+preemption service for a bridge port and end station.</li>
+<li>Ensure that preemption is only enabled on a given link if both
+link partners have that capability.</li>
+</ul>
+<p></p>
+
+<p class="middle0">
+The purpose of this amendment is to provide
+reduced latency transmission for scheduled, time-critical
+frames in a bridged LAN.
+</p>
+
+<p class="middle0">
+A large, non-time-critical frame may start ahead of time-critical frame transmission. This condition
+leads to excessive latency for the time-critical frame.
+The lack of transmission preemption severely inhibits the capabilities of an application that uses scheduled frame transmission
+to implement a real-time control network.
+</p>
+
+<center>
+<a href="http://standards.ieee.org/cgi-bin/status?Designation:%20802.1Qbu"><img src="./IEEE 802.1_ 802.1Qbu - Frame Preemption_files/current_status.gif" alt="Status" border="0"></a><br>
+<table width="60%" border="1">
+<tbody><tr><td align="right"><b>Status</b></td><td>PAR approved 15th May 2012.</td></tr>
+
+</tbody></table>
+</center>
+
+<br>
+<center>
+<a href="http://www.ieee802.org/1/files/private/bu-drafts/"><img src="./IEEE 802.1_ 802.1Qbu - Frame Preemption_files/archive.gif" alt="Archive" border="0"></a><br>
+<table width="60%" border="1">
+<tbody><tr><th width="20%">Date</th><th>Document</th></tr>
+
+
+<tr><td align="right">19 Aug 2013</td><td><a href="http://www.ieee802.org/1/files/private/bu-drafts/d0/802-1Qbu-d0-0.pdf">802.1Qbu, Draft 0.0</a></td></tr>
+<tr><td align="right">04 Jul 2014</td><td><a href="http://www.ieee802.org/1/files/private/bu-drafts/d0/802-1Qbu-d0-1.pdf">802.1Qbu, Draft 0.1</a></td></tr>
+<tr><td align="right">28 Jul 2014</td><td><a href="http://www.ieee802.org/1/files/private/bu-drafts/d1/802-1Qbu-d1-0.pdf">802.1Qbu, Draft 1.0</a></td></tr>
+<tr><td align="right">28 Aug 2014</td><td><a href="http://www.ieee802.org/1/files/private/bu-drafts/d1/802-1Qbu-D1-0-pdis-v1.pdf">802.1Qbu, Draft 1.0 proposed comment dispositions</a></td></tr>
+<tr><td align="right">29 Aug 2014</td><td><a href="http://www.ieee802.org/1/files/private/bu-drafts/d1/802-1Qbu-D1-0-pdis-v2.pdf">802.1Qbu, Draft 1.0 proposed comment dispositions</a></td></tr>
+<tr><td align="right">01 Sep 2014</td><td><a href="http://www.ieee802.org/1/files/private/bu-drafts/d1/802-1Qbu-D1-0-pdis-v3.pdf">802.1Qbu, Draft 1.0 proposed comment dispositions</a></td></tr>
+<tr><td align="right">29 Sep 2014</td><td><a href="http://www.ieee802.org/1/files/private/bu-drafts/d1/802-1Qbu-D1-0-dis.pdf">802.1Qbu, Draft 1.0 comment dispositions</a></td></tr>
+<tr><td align="right">16 Oct 2014</td><td><a href="http://www.ieee802.org/1/files/private/bu-drafts/d1/802-1Qbu-d1-1.pdf">802.1Qbu, Draft 1.1</a></td></tr>
+<tr><td align="right">02 Nov 2014</td><td><a href="http://www.ieee802.org/1/files/private/bu-drafts/d1/802-1Qbu-D1-1-pdis-v1.pdf">802.1Qbu, Draft 1.1 proposed comment dispositions</a></td></tr>
+<tr><td align="right">21 Nov 2014</td><td><a href="http://www.ieee802.org/1/files/private/bu-drafts/d1/802-1Qbu-D1-1-dis.pdf">802.1Qbu, Draft 1.1 comment dispositions</a></td></tr>
+<tr><td align="right">01 Dec 2014</td><td><a href="http://www.ieee802.org/1/files/private/bu-drafts/d2/802-1Qbu-d2-0.pdf">802.1Qbu, Draft 2.0</a></td></tr>
+<tr><td align="right">11 Jan 2015</td><td><a href="http://www.ieee802.org/1/files/private/bu-drafts/d2/802-1Qbu-D2-0-pdis-v1.pdf">802.1Qbu, Draft 2.0 proposed comment dispositions</a></td></tr>
+<tr><td align="right">22 Jan 2015</td><td><a href="http://www.ieee802.org/1/files/private/bu-drafts/d2/802-1Qbu-D2-0-dis-BIS.pdf">802.1Qbu, Draft 2.0 comment dispositions</a></td></tr>
+<tr><td align="right">22 Jan 2015</td><td><a href="http://www.ieee802.org/1/files/private/bu-drafts/d2/802-1Qbu-D2-0-dis.pdf">802.1Qbu, Draft 2.0 comment dispositions</a></td></tr>
+<tr><td align="right">13 Feb 2015</td><td><a href="http://www.ieee802.org/1/files/private/bu-drafts/d2/802-1Qbu-d2-1.pdf">802.1Qbu, Draft 2.1</a></td></tr>
+<tr><td align="right">10 Mar 2015</td><td><a href="http://www.ieee802.org/1/files/private/bu-drafts/d2/802-1Qbu-D2-1-pdis-v1.pdf">802.1Qbu, Draft 2.1 proposed comment dispositions</a></td></tr>
+<tr><td align="right">10 Mar 2015</td><td><a href="http://www.ieee802.org/1/files/private/bu-drafts/d2/802-1Qbu-D2-1-pdis-v2.pdf">802.1Qbu, Draft 2.1 proposed comment dispositions</a></td></tr>
+<tr><td align="right">12 Mar 2015</td><td><a href="http://www.ieee802.org/1/files/private/bu-drafts/d2/802-1Qbu-D2-1-dis.pdf">802.1Qbu, Draft 2.1 comment dispositions</a></td></tr>
+<tr><td align="right">01 May 2015</td><td><a href="http://www.ieee802.org/1/files/private/bu-drafts/d2/802-1Qbu-d2-2.pdf">802.1Qbu, Draft 2.2</a></td></tr>
+<tr><td align="right">17 May 2015</td><td><a href="http://www.ieee802.org/1/files/private/bu-drafts/d2/802-1Qbu-D2-2-pdis-v1.pdf">802.1Qbu, Draft 2.2 proposed comment dispositions</a></td></tr>
+<tr><td align="right">21 May 2015</td><td><a href="http://www.ieee802.org/1/files/private/bu-drafts/d2/802-1Qbu-D2-2-dis.pdf">802.1Qbu, Draft 2.2 comment dispositions</a></td></tr>
+<tr><td align="right">04 Jun 2015</td><td><a href="http://www.ieee802.org/1/files/private/bu-drafts/d2/802-1Qbu-d2-3.pdf">802.1Qbu, Draft 2.3</a></td></tr>
+<tr><td align="right">10 Jul 2015</td><td><a href="http://www.ieee802.org/1/files/private/bu-drafts/d2/802-1Qbu-D2-3-pdis-v1.pdf">802.1Qbu, Draft 2.3 proposed comment dispositions</a></td></tr>
+<tr><td align="right">15 Jul 2015</td><td><a href="http://www.ieee802.org/1/files/private/bu-drafts/d2/802-1Qbu-D2-3-dis.pdf">802.1Qbu, Draft 2.3 comment dispositions</a></td></tr>
+<tr><td align="right">29 Jul 2015</td><td><a href="http://www.ieee802.org/1/files/private/bu-drafts/d3/802-1Qbu-d3-0.pdf">802.1Qbu, Draft 3.0</a></td></tr>
+<tr><td align="right">02 Sep 2015</td><td><a href="http://www.ieee802.org/1/files/private/bu-drafts/d3/802-1Qbu-3-0-pdis-v1.pdf">802.1Qbu, Draft 3.0 proposed comment dispositions</a></td></tr>
+<tr><td align="right">25 Sep 2015</td><td><a href="http://www.ieee802.org/1/files/private/bu-drafts/d3/802-1Qbu-3-0-dis.pdf">802.1Qbu, Draft 3.0 comment dispositions</a></td></tr>
+<tr><td align="right">07 Oct 2015</td><td><a href="http://www.ieee802.org/1/files/private/bu-drafts/d3/802-1Qbu-3-1-dis.pdf">802.1Qbu, Draft 3.1 comment dispositions</a></td></tr>
+
+</tbody></table>
+</center>
+
+<br>
+<center>
+<a href="http://www.ieee802.org/1/files/public/docs2014/"><img src="./IEEE 802.1_ 802.1Qbu - Frame Preemption_files/presentations.gif" alt="Presentations" border="0"></a><br>
+<table width="60%" border="1">
+<tbody><tr><th width="20%">Date</th><th>Document</th></tr>
+
+<tr><td align="right">18 Jul 2012</td><td><a href="http://www.ieee802.org/1/files/public/docs2012/bu-mjt-bu-goals-for-ethernet-0712.pdf">Presentation bu-mjt-bu-goals-for-ethernet-0712.pdf</a></td></tr>
+<tr><td align="right">20 Mar 2013</td><td><a href="http://www.ieee802.org/1/files/public/docs2013/bu-boiger-TAS-in-combination-with-Qbu-0313.pdf">Presentation bu-boiger-TAS-in-combination-with-Qbu-0313.pdf</a></td></tr>
+<tr><td align="right">16 May 2013</td><td><a href="http://www.ieee802.org/1/files/public/docs2013/bu-boiger-IET-and-TAS-0513.pdf">Presentation bu-boiger-IET-and-TAS-0513.pdf</a></td></tr>
+<tr><td align="right">15 May 2014</td><td><a href="http://www.ieee802.org/1/files/public/docs2014/bu-nfinn-status-for-802-3-0514-v01.pdf">Presentation bu-nfinn-status-for-802-3-0514-v01.pdf</a></td></tr>
+<tr><td align="right">10 Sep 2014</td><td><a href="http://www.ieee802.org/1/files/public/docs2014/bu-boiger-CBS-Preemption-Support-0914-v01.pdf">Presentation bu-boiger-CBS-Preemption-Support-0914-v01.pdf</a></td></tr>
+<tr><td align="right">11 Sep 2014</td><td><a href="http://www.ieee802.org/1/files/public/docs2014/bu-thaler-iet-management-model-alternatives-v01.pdf">Presentation bu-thaler-iet-management-model-alternatives-v01.pdf</a></td></tr>
+
+</tbody></table>
+</center>
+
+
+<!-- Start of include file inc/body-footer.html -->
+<hr>
+<center><p><font size="-1">
+Pages <a href="http://www.ieee802.org/1/pages/copyright.html">copyright</a> © Institute of Electrical and Electronics Engineers, Inc.
+Please read the rules on <a href="http://www.ieee802.org/1/pages/conf-cpr-stmt.html">Confidentiality Statements and Copyright Notices on Communications</a>.
+Information on <a href="http://www.ieee.org/privacy">Privacy and opting out of cookies</a> is available.
+If you have any comments on these pages, please send them to <a href="mailto:J.L.Messenger@ieee.org">me</a>.
+</font></p>
+<p>
+        <a href="http://validator.w3.org/check?uri=referer">
+          <img style="border:0;width:88px;height:31px" src="./IEEE 802.1_ 802.1Qbu - Frame Preemption_files/valid-xhtml10" alt="Valid XHTML 1.0 Transitional"></a>
+        <a href="http://jigsaw.w3.org/css-validator/">
+          <img style="border:0;width:88px;height:31px" src="./IEEE 802.1_ 802.1Qbu - Frame Preemption_files/vcss" alt="Valid CSS!"></a>
+</p>
+</center>
+<!-- End of include file inc/body-footer.html -->
+<center><font size="-1"><i>Last status: 0</i></font></center>
+<center><font size="-1"><i>Last modified by jmesseng, at 12:10PM on Wed, 07 Oct 2015</i></font></center>
+<hr>
+
+<!-- Start of include file inc/body-end.html -->
+
+</div>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script src="./IEEE 802.1_ 802.1Qbu - Frame Preemption_files/ga.js.Download" type="text/javascript"></script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-12983763-1");
+pageTracker._setCookiePath("/1/");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+
+<!-- End of include file inc/body-end.html -->
+
+<!-- Start of include file inc/foot.html -->
+<!-- End of include file inc/foot.html -->
+
+
+
+
+
+
+
+
+<style type="text/css">
+    /* loading */
+    .lt-sk-three-bounce {
+      margin: 2px auto;
+      width: 100%;
+      text-align: center; }
+      .lt-sk-three-bounce .lt-sk-child {
+        width: 5px;
+        height: 5px;
+        background-color: #333;
+        border-radius: 100%;
+        display: inline-block;
+        -webkit-animation: lt-sk-three-bounce 1.4s ease-in-out 0s infinite both;
+                animation: lt-sk-three-bounce 1.4s ease-in-out 0s infinite both; }
+      .lt-sk-three-bounce .lt-sk-bounce1 {
+        -webkit-animation-delay: -0.32s;
+                animation-delay: -0.32s; }
+      .lt-sk-three-bounce .lt-sk-bounce2 {
+        -webkit-animation-delay: -0.16s;
+                animation-delay: -0.16s; }
+
+    @-webkit-keyframes lt-sk-three-bounce {
+      0%, 80%, 100% {
+        -webkit-transform: scale(0);
+                transform: scale(0); }
+      40% {
+        -webkit-transform: scale(1);
+                transform: scale(1); } }
+
+    @keyframes lt-sk-three-bounce {
+      0%, 80%, 100% {
+        -webkit-transform: scale(0);
+                transform: scale(0); }
+      40% {
+        -webkit-transform: scale(1);
+                transform: scale(1); } }
+  </style></body></html>

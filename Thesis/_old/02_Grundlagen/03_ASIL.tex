@@ -1,0 +1,40 @@
+\section{\acl{ASIL}}\label{sec:GrundlagenASIL}
+
+Mittels \acf{ASIL} wird der Sicherheitsgrad einer Anwendung definiert. Dieser wurde unter der ISO 26262 standardisiert und hat sich bereits im Automotiv Bereich etabliert. Hier werden die verschiedenen \acs{ASIL}-Level verwendet, um das Risiko einer Funktion mit deren Sicherheitsansprüchen in Relation zu stellen. Es wird lediglich das Risiko für den Fahrer und sein Umfeld berechnet. 
+Das Level wird unter Zuhilfenahme dreier Parametern definiert:
+\begin{itemize}
+	\item \textbf{Severity - S} 
+	\newline Schwere des Fehlers, Grad der möglichen Verletzungen
+	\subitem S0: keine Verletzungen
+	\subitem S1: leicht bis mittelschwere Verletzungen
+	\subitem S2: schwere Verletzungen, Überleben wahrscheinlich
+	\subitem S3: schwerste Verletzungen, Überleben unwahrscheinlich
+	\item \textbf{Exposure - E}
+	\newline Eintrittswahrscheinlichkeit des Fehlers
+	\subitem E1: seltenes Auftreten
+	\subitem E2: gelegentliches Auftreten
+	\subitem E3: häufiges Auftreten
+	\subitem E4: ständiges Auftreten
+	
+	\newpage	
+	\item \textbf{Controllability - C}
+	\newline Beherrschbarkeit des Fehlers
+	\subitem C0: sichere Beherrschung
+	\subitem C1: einfache Beherrschbarkeit
+	\subitem C2: normale Beherrschbarkeit
+	\subitem C3: schwierige Beherrschbarkeit
+\end{itemize}
+Anhand der Grafik wird die ASIL-Klassifikation bestimmt.
+\singlefigure{\label{fig:ASILLevel}}{99_IMG/03_manifest/ASILLevel.png}{ASIL Klassifikation}
+
+Alles was sich im Bereich \emph{QM} befindet, muss nicht extra abgesichert werden, da es in der Regel mit den Grundstandards abgedeckt ist. Die andern Level erläutern sich wie folgt:
+\begin{itemize}
+	\item \textbf{ASIL A}
+	\newline Empfohlene Ausfallwahrscheinlichkeit kleiner 10$^{-6}$ pro Stunde
+	\item \textbf{ASIL B}
+	\newline Empfohlene Ausfallwahrscheinlichkeit kleiner 10$^{-7}$ pro Stunde
+	\item \textbf{ASIL C}
+	\newline Geforderte Ausfallwahrscheinlichkeit kleiner 10$^{-7}$ pro Stunde
+	\item \textbf{ASIL D}
+	\newline Geforderte Ausfallwahrscheinlichkeit kleiner 10$^{-8}$ pro Stunde 
+\end{itemize}

@@ -1,0 +1,51 @@
+\section{Definition und Begriffe aus dem Netzwerkbereich}
+Im folgenden Unterkapitel werden Begriffe und Definitionen erläutert, welche in den weiteren Kapiteln relevant sind. Es wird auf deterministische Echtzeitfähigkeit, \ac{TSN} im Hinblick auf den Automobil-Bereich und \acf{QoS} Parameter mit deren Einflüsse und Ethernet in Fahrzeugen eingegangen. Was \ac{QoS} für ein Netzwerk bedeutet, wird im nächsten Unterkapitel erläutert.
+
+\subsection{\ac{QoS}-Parameter}\label{sec:QoSParam}
+Innerhalb eines Netzwerkes werden verschieden Dienste angeboten, welche durch ihre benötigten Parameter definiert werden können. Die Parametrisierung von Diensten ist im Standard ISO/IEC 13236 als \acf{QoS} definiert und bezeichnet die Dienstgüte. Die vorhandenen Netzwerkdienste können anhand ihrer Güte spezifiziert und klassifiziert werden. Im Werk Computer Networks von A. Tannenbaum wird \acs{QoS} wie folgt beschrieben:
+\begin{quote}
+	\emph{"Die Qualität eines Services ist die Bezeichnung für die Mechanismen die die unterschiedlichen Anforderungen einr Anwendung miteinander vereinbaren."}
+\end{quote}
+Im Wesentlichen ergeben sich folgende vier Hauptparameter, Latenz, Jitter, Paketverlust und Bandbreite, welche im weiteren Verlauf näher erläutert werden \cite{Network}.
+
+\subsection{Deterministisches Fahrzeugnetzwerk}
+Bei den zunehmend komplexeren Aufgaben eines Kommunikationssystems in einem Fahrzeug wird es immer schwieriger die Echtzeitfähigkeit eines Systems zu garantieren. Daten die mit der Anforderung an Echtzeit versendet werden, bezeichnet man auch als kritische/zeitkritische Daten. Diese müssen innerhalb einer vorgegebenen maximalen Zeitverzögerung beim Empfänger zur Verfügung sehen. Durch die in Unterabschnitt \ref{sec:QoSParam} definierten \acs{QoS}-Parameter, können Garantien für die Verfügbarkeit von kritischen Daten getroffen werden.
+Die Haupteigenschaften eines deterministischen Ethernet-Systems sind:
+\begin{itemize}
+	\item Vorhersagbarkeit von Ereignissen im Netzwerk
+	\item Berechenbarkeit des Systems
+	\item Konsistente Antwortzeiten zwischen den Endverbrauchern
+\end{itemize}
+Der Netzwerk-Determinismus ermöglicht es, Daten garantiert in einem definierten Zeitfenster zwischen Endsystemen auszutauschen. Um eine deterministische Übertragung sicherzustellen, muss die Beeinflussung durch nicht planbare und nicht vorhersagbare Ereignisse im Netzwerk verhindert werden \cite{determinismus}.
+
+
+\subsection{Latenz}\label{sec:Latenz}
+Die Latenz beschreibt in erster Linie die Performance eines Systems. In dieser Arbeit wird hauptsächlich auf die Latenzzeit beim Übermitteln von Nachrichten eingegangen. Diese beschreibt die Zeit, welche zwischen der Versendung und dem Empfang eines Datenpaketes im Netzwerk benötigt wird. Durch anderen Datenverkehr im System kann es zusätzlich zur Erhöhung der Latenz kommen. Der sog. Querverkehr kann zum Problem werden, falls nicht-kritische und kritische Daten gemeinsam über eine Kommunikationsstrecke fliesen. Querverkehr (eng. \emph{interspersing traffic}) bezeichnet in dieser Arbeit Daten, die den eigentlichen Datenfluss beeinträchtigen. Hier kann es bei jedem Hop zu Verzögerungen kommen. Ein Hop bezeichnet den Weg zwischen zwei Netzwerkknoten \cite{GrundlagenNetwork}. \cite{ComputerNetworking} 
+
+Abbildung \ref{fig:Latenz} zeigt ein Beispiel zur Versendung von Nachrichtenpaketen \(p_1 \dots p_6\) von zweier Anwendungen \emph{A} und \emph{B} über einen Switch (\ac{ECU}). Hier kommt es an verschiedenen Stellen zu Verzögerungen der Pakete. Diese bezeichnet man als Delays.
+Ein Netzwerk\-switch besitzt mindestens eine Warteschlange (\emph{Queue}).Jedes Datenpaket hat zwei \ac{MAC}-Adressen, die erste gibt den Absender an, die zweit den Empfänger. Die Daten werden anhand der \ac{MAC}-Adresse an die angegebene Empfängeradresse weitergeleitet. In diesem Beispiel hätte das Paket \emph{\(p_1\)} die Empfänger-\ac{MAC}-Adresse von \emph{C}.
+
+\singlefigure{\label{fig:Latenz}}{99_IMG/02_grundlagen/latenz.png}{Entstehung der Latenzzeiten bei Übermittlung von Datenpaketen \newline(Modell angelehnt an Literatur \cite{ComputerNetworking})}
+
+\newpage
+
+In den folgenden Punkten wird auf die verschieden Delay-Arten eingegangen:
+\begin{itemize}
+	\item Verarbeitungsverzögerung (Processing Delay \emph{\(d_{proc}\)})
+	\newline Beim Empfangen des Datenpakets am Switch wird es anhand der \ac{MAC}-Adresse zum entsprechenden Ausgangsport weitergeleitet. Die Verzögerung entsteht bei der Verarbeitung des Paket-Headers. Hier wird neben der Zieladresse auch auf mögliche Fehler, wie beispielsweise Bit- und Übertragungsfehler, geprüft. Mit steigenden Anforderungen an die Kommunikation, können hier auch weitere Prüfungen stattfinden \cite{CharacterizingNetwork}. Die Verarbeitungszeitverzögerung ist auch abhängig von der Implementation des Switches \cite{ComputerNetworking}.\newline
+	\item Warteschlangenverzögerung (Queuing Delay \emph{\(d_{queue}\)})
+	\newline Jeder Port zum Datenversand hat eine Möglichkeit zur Datenzwischenspeicherung mittels verschiedener Queues. Diese ist nötig, da immer nur nacheinander Daten übertragen werden können. Ist ein Port gerade belegt, wird das Paket in die zugehörige Queue eingereiht. Die Wartezeitverzögerung berechnet sich aus der Summe von noch zu versendenden Paketen. Je mehr Pakete bereits in einer Warteschlange sind, desto höher ist die Wartezeit.
+	Ein Port kann auch priorisierte Warteschlangen haben. Hierbei hat er mehrere Queues, die je nach Wichtigkeit der Datenpakete befüllt werden und nach diesem Prinzip abgearbeitet werden \cite{ComputerNetworking}.\newline
+	\item Übertragungsverzögerung (Transmission Delay \emph{\(d_{trans}\)})
+	\newline Die Übertragungsverzögerung  bezeichnet die Zeit, die benötigt wird um ein Datenpaket komplett auf die Leitung zu legen. Sie steht somit in direkter Abhängigkeit zu der Paketgröße. \cite{ComputerNetworking}\newline
+	\item Ausbreitungsverzögerung (Propagation Delay \emph{\(d_{prop}\)})
+	Die Weiterleitung zum nächsten Switch oder Endpunkt der Nachricht wird durch die Ausbreitungsverzögerung angegeben. Diese ist direkt proportional zur Leitungsgeschwindigkeit, welche wiederum von der physikalischen Beschaffenheit des Mediums abhängt \cite{ComputerNetworking}.
+\end{itemize}
+
+Alle diese Delay-Zeiten aufsummiert, ergeben die Latenzzeit einer Nachricht. Befinden sich auf der Kommunikationsstrecke mehrere Switche, so gibt es auch mehre Wege, die bereits erwähnten Hops, so müssen diese Verzögerungen auch mit beachtet werden.
+
+\subsection{Jitter}\label{sec:Jitter}
+Mit \emph{Jitter} wird die Schwankung der Verzögerungszeit bezeichnet und gibt die maximale Differenz zwischen Ende-zu-Ende-Verzögerung an. Die Hauptgründe für Schwankungen sind vor allem Abweichungen beim Zugriff auf Übertragungsmedien und Querverkehr im Datenstrom. Jitter kann sowohl zu Verspätungen als auch zum verfrühten Ankommen von Datenpaketen führen. Durch diese Schwankungen sind Laufzeitgarantien weniger genau möglich. In der Netzwerktechnik wird Jitter auch oft als Varianz oder Laufzeit von Datenpaketen bezeichnet \cite{GrundlagenNetwork} \cite{ComputerNetworking}.
+
+ \subsection{Paketverlust}
+Es gibt verschiedene Ursachen die zu Paketverlust führen. Die häufigsten Verluste sind Fehler bei der Übertragung und Verluste bei der Verarbeitung in Switchen. Bei Letzterem kommt es bei zu vielen Datenpaketen zu einem Überlauf einer Queue. Dies bezeichnet man als \emph{Buffer-Overflow}. Hierbei gehen die zuletzt eingegangen Pakete verloren, da sie nicht mehr zur Verarbeitung in der Warteschlange platziert werden können. Ein Überlauf kommt nur dann zustande, wenn die Datenrate der ausgehenden Übertragungsleitung nicht mehr ausreichend ist, um die angestauten Pakete aus den zugehörigen Queues versenden zu können \cite{GrundlagenNetwork}\cite{ComputerNetworking}.

@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<!-- saved from url=(0038)https://1.ieee802.org/tsn/802-1as-rev/ -->
+<html lang="en-US" xmlns:og="http://opengraphprotocol.org/schema/" xmlns:fb="http://www.facebook.com/2008/fbml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=10.0, user-scalable=yes"><title>P802.1AS-Rev – Timing and Synchronization for Time-Sensitive Applications | </title>
+<meta name="description" content="IEEE 802.1 - "><link rel="pingback" href="https://ieee802dot1.wpengine.com/xmlrpc.php"><link rel="dns-prefetch" href="https://ieee802dot1.wpengine.com/">
+<link rel="dns-prefetch" href="https://s.w.org/">
+<link rel="alternate" type="application/rss+xml" title="IEEE 802.1 » Feed" href="https://1.ieee802.org/feed/">
+<link rel="alternate" type="application/rss+xml" title="IEEE 802.1 » Comments Feed" href="https://1.ieee802.org/comments/feed/">
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.4\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.4\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/ieee802dot1.wpengine.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.9.5"}};
+			!function(a,b,c){function d(a,b){var c=String.fromCharCode;l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,a),0,0);var d=k.toDataURL();l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,b),0,0);var e=k.toDataURL();return d===e}function e(a){var b;if(!l||!l.fillText)return!1;switch(l.textBaseline="top",l.font="600 32px Arial",a){case"flag":return!(b=d([55356,56826,55356,56819],[55356,56826,8203,55356,56819]))&&(b=d([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]),!b);case"emoji":return b=d([55357,56692,8205,9792,65039],[55357,56692,8203,9792,65039]),!b}return!1}function f(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var g,h,i,j,k=b.createElement("canvas"),l=k.getContext&&k.getContext("2d");for(j=Array("flag","emoji"),c.supports={everything:!0,everythingExceptFlag:!0},i=0;i<j.length;i++)c.supports[j[i]]=e(j[i]),c.supports.everything=c.supports.everything&&c.supports[j[i]],"flag"!==j[i]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[j[i]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(h=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",h,!1),a.addEventListener("load",h,!1)):(a.attachEvent("onload",h),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),g=c.source||{},g.concatemoji?f(g.concatemoji):g.wpemoji&&g.twemoji&&(f(g.twemoji),f(g.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script><script src="./P802.1AS-Rev – Timing and Synchronization for Time-Sensitive Applications __files/wp-emoji-release.min.js.Download" type="text/javascript" defer=""></script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel="stylesheet" id="wcs-timetable-css" href="./P802.1AS-Rev – Timing and Synchronization for Time-Sensitive Applications __files/timetable.css" type="text/css" media="all">
+<style id="wcs-timetable-inline-css" type="text/css">
+.wcs-single__action .wcs-btn--action{color:rgba( 255,255,255,1);background-color:#BD322C}
+</style>
+<link rel="stylesheet" id="toc-screen-css" href="./P802.1AS-Rev – Timing and Synchronization for Time-Sensitive Applications __files/screen.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="bootstrap-style-css" href="./P802.1AS-Rev – Timing and Synchronization for Time-Sensitive Applications __files/bootstrap.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="theme_style-css" href="./P802.1AS-Rev – Timing and Synchronization for Time-Sensitive Applications __files/style.css" type="text/css" media="all">
+<link rel="stylesheet" id="navigation-side-style-css" href="./P802.1AS-Rev – Timing and Synchronization for Time-Sensitive Applications __files/navigation-side.css" type="text/css" media="all">
+<link rel="stylesheet" id="wiki-style-css" href="./P802.1AS-Rev – Timing and Synchronization for Time-Sensitive Applications __files/wiki.css" type="text/css" media="all">
+<link rel="stylesheet" id="netgo-expandable-collapsible-menu-css" href="./P802.1AS-Rev – Timing and Synchronization for Time-Sensitive Applications __files/styles.css" type="text/css" media="screen">
+<link rel="stylesheet" id="tablepress-default-css" href="./P802.1AS-Rev – Timing and Synchronization for Time-Sensitive Applications __files/default.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="simcal-qtip-css" href="./P802.1AS-Rev – Timing and Synchronization for Time-Sensitive Applications __files/jquery.qtip.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="simcal-default-calendar-grid-css" href="./P802.1AS-Rev – Timing and Synchronization for Time-Sensitive Applications __files/default-calendar-grid.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="simcal-default-calendar-list-css" href="./P802.1AS-Rev – Timing and Synchronization for Time-Sensitive Applications __files/default-calendar-list.min.css" type="text/css" media="all">
+<script type="text/javascript" src="./P802.1AS-Rev – Timing and Synchronization for Time-Sensitive Applications __files/jquery.js.Download"></script>
+<script type="text/javascript" src="./P802.1AS-Rev – Timing and Synchronization for Time-Sensitive Applications __files/jquery-migrate.min.js.Download"></script>
+<script type="text/javascript" src="./P802.1AS-Rev – Timing and Synchronization for Time-Sensitive Applications __files/functions.js.Download"></script>
+<script type="text/javascript" src="./P802.1AS-Rev – Timing and Synchronization for Time-Sensitive Applications __files/script.js.Download"></script>
+<link rel="https://api.w.org/" href="https://1.ieee802.org/wp-json/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://ieee802dot1.wpengine.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://ieee802dot1.wpengine.com/wp-includes/wlwmanifest.xml"> 
+<link rel="canonical" href="https://1.ieee802.org/tsn/802-1as-rev/">
+<link rel="shortlink" href="https://1.ieee802.org/?p=32">
+<link rel="alternate" type="application/json+oembed" href="https://1.ieee802.org/wp-json/oembed/1.0/embed?url=https%3A%2F%2F1.ieee802.org%2Ftsn%2F802-1as-rev%2F">
+<link rel="alternate" type="text/xml+oembed" href="https://1.ieee802.org/wp-json/oembed/1.0/embed?url=https%3A%2F%2F1.ieee802.org%2Ftsn%2F802-1as-rev%2F&amp;format=xml">
+<style type="text/css" media="all" id="wcs_styles"></style>		<style type="text/css" id="wp-custom-css">
+			/*
+You can add your own CSS here.
+
+Click the help icon above to learn more.
+*/
+/* John's infobox creates a box at the
+   right hand side of your page body
+ */
+.infobox {
+  border: solid 1px;
+  float: right;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  background: #CCFFFF;
+}
+
+div.tl-timenav {
+	font-size: small;
+	color: blue;
+}		</style>
+	</head><body class="page-template-default page page-id-32 page-child parent-pageid-30 wp-custom-logo body"><header class="headerMain"><div class="header-content"><div id="logo"><a href="https://1.ieee802.org/" id="site-logo" title="IEEE 802.1" rel="home"><img class="logo-img" src="./P802.1AS-Rev – Timing and Synchronization for Time-Sensitive Applications __files/8021-Logo.gif" alt="IEEE 802.1"></a></div></div></header><div class="container-fluid"><div class="meta clearfix"><div class="meta-search-form"><form role="search" method="get" class="search-form" action="https://1.ieee802.org/"><label><input type="search" class="search-field" placeholder="Search" value="" name="s" title="Search"></label><input type="submit" class="search-submit" value="Search"></form></div></div><div class="navMenuButton">
+    <header class="navMenuButtonTitle">Menu</header>
+    <div class="navMenuButtonContent">
+        <hr>
+        <hr>
+        <hr>
+    </div>
+</div>
+
+<div class="primary-menu primary-menu-side">
+    <div class="primary-menu-container">
+        <nav class="nav-container">
+            <div class="menu-main-menu-container"><ul class="main-menu"><li id="menu-item-383" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-383"><a href="http://standards.ieee.org/">IEEE-SA</a></li>
+<li id="menu-item-384" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-384"><a href="http://www.ieee802.org/">IEEE 802</a></li>
+<li id="menu-item-57" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-57"><a href="https://1.ieee802.org/rules/">WG Policies and Procedures</a>
+<ul class="sub-menu">
+	<li id="menu-item-219" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-219"><a href="https://1.ieee802.org/email-lists/">802.1 Email Lists</a></li>
+	<li id="menu-item-154" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-154"><a href="https://1.ieee802.org/rules/wg-membership/">802.1 WG Voting Membership</a></li>
+	<li id="menu-item-60" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-60"><a href="https://1.ieee802.org/confidentiality-statements-and-copyright-notices-on-communications/">Confidentiality Statements and Copyright Notices</a></li>
+</ul>
+</li>
+<li id="menu-item-70" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-70"><a href="https://1.ieee802.org/meetings/">Future Meetings</a></li>
+<li id="menu-item-458" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-458"><a href="https://1.ieee802.org/documents/">Documents</a>
+<ul class="sub-menu">
+	<li id="menu-item-367" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-367"><a href="http://www.ieee802.org/1/files/public/">Public Documents</a></li>
+	<li id="menu-item-368" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-368"><a href="http://www.ieee802.org/1/files/private/">Committee Documents</a></li>
+	<li id="menu-item-220" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-220"><a href="https://1.ieee802.org/active-ballots/">Active Ballots</a></li>
+</ul>
+</li>
+<li id="menu-item-56" class="menu-item menu-item-type-post_type menu-item-object-page current-page-ancestor current-menu-ancestor current-menu-parent current-page-parent current_page_parent current_page_ancestor menu-item-has-children menu-item-56"><a href="https://1.ieee802.org/tsn/">Time-Sensitive Networking (TSN) Task Group</a>
+<ul class="sub-menu">
+	<li id="menu-item-218" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-218"><a href="https://1.ieee802.org/tsn/802-1cs/">802.1CS – Link-local Registration Protocol</a></li>
+	<li id="menu-item-340" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-340"><a href="https://1.ieee802.org/tsn/802-1ax-rev/">802.1AX-Rev – Link Aggregation Revision</a></li>
+	<li id="menu-item-55" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-32 current_page_item menu-item-55"><a href="https://1.ieee802.org/tsn/802-1as-rev/">802.1AS-Rev – Timing and Synchronization for Time-Sensitive Applications</a></li>
+	<li id="menu-item-53" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-53"><a href="https://1.ieee802.org/tsn/802-1qcc/">802.1Qcc – Stream Reservation Protocol (SRP) Enhancements and Performance Improvements</a></li>
+	<li id="menu-item-50" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-50"><a href="https://1.ieee802.org/tsn/802-1qcj/">802.1Qcj – Automatic Attachment to Provider Backbone Bridging (PBB) services</a></li>
+	<li id="menu-item-48" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-48"><a href="https://1.ieee802.org/tsn/802-1cm/">802.1CM – Time-Sensitive Networking for Fronthaul</a></li>
+	<li id="menu-item-47" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-47"><a href="https://1.ieee802.org/tsn/802-1qcp/">802.1Qcp – Bridges and Bridged Networks Amendment: YANG Data Model</a></li>
+	<li id="menu-item-46" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-46"><a href="https://1.ieee802.org/tsn/802-1qcr/">802.1Qcr – Bridges and Bridged Networks Amendment: Asynchronous Traffic Shaping</a></li>
+	<li id="menu-item-338" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-338"><a href="https://1.ieee802.org/tsn/802-1abcu/">802.1ABcu – LLDP YANG Data Model</a></li>
+	<li id="menu-item-337" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-337"><a href="https://1.ieee802.org/tsn/802-1qcw/">802.1Qcw – YANG Data Models for Scheduled Traffic, Frame Preemption, and Per-Stream Filtering and Policing</a></li>
+	<li id="menu-item-336" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-336"><a href="https://1.ieee802.org/tsn/802-1qcx/">802.1Qcx – YANG Data Model for Connectivity Fault Management</a></li>
+</ul>
+</li>
+<li id="menu-item-138" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-138"><a href="https://1.ieee802.org/omniran/">OmniRAN Task Group</a>
+<ul class="sub-menu">
+	<li id="menu-item-75" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-75"><a href="https://1.ieee802.org/omniran/802-1cf/">802.1CF Network Reference Model and Functional Description of IEEE 802 Access Network</a></li>
+</ul>
+</li>
+<li id="menu-item-61" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-61"><a href="https://1.ieee802.org/dcb/">Addressing and Data Center Bridging (DCB)</a>
+<ul class="sub-menu">
+	<li id="menu-item-431" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-431"><a href="https://1.ieee802.org/dcb/802-1qcy/">802.1Qcy – VDP Extension to Support NVO3</a></li>
+</ul>
+</li>
+<li id="menu-item-113" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-113"><a href="https://1.ieee802.org/security/">Security Task Group</a>
+<ul class="sub-menu">
+	<li id="menu-item-163" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-163"><a href="https://1.ieee802.org/security/802-1ar-rev/">P802.1AR-Rev: Secure Device Identity (Revision)</a></li>
+	<li id="menu-item-162" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-162"><a href="https://1.ieee802.org/security/802-1xck/">P802.1Xck: Port-Based Network Access Control—Amendment 2: <br>YANG Data Model</a></li>
+	<li id="menu-item-161" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-161"><a href="https://1.ieee802.org/security/802e/">P802E: Recommended Practice for Privacy Considerations for IEEE 802 Technologies</a></li>
+</ul>
+</li>
+<li id="menu-item-304" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-304"><a href="https://1.ieee802.org/maintenance/">Maintenance</a>
+<ul class="sub-menu">
+	<li id="menu-item-303" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-303"><a href="https://1.ieee802.org/maintenance/802-1q-rev/">802.1Q-Rev Bridges and Bridged Networks – Revision</a></li>
+	<li id="menu-item-302" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-302"><a href="https://1.ieee802.org/maintenance/802-1ac-2016-cor-1/">802.1AC-2016/Cor-1 LLC Encapsulation EtherType</a></li>
+</ul>
+</li>
+<li id="menu-item-276" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-276"><a href="https://1.ieee802.org/802-nendica/">“802 Network Enhancement For the Next Decade” Industry Connections Activity (NENDica)</a></li>
+<li id="menu-item-82" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-82"><a href="https://1.ieee802.org/object-identifiers/">Object Identifiers</a></li>
+<li id="menu-item-222" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-222"><a href="https://1.ieee802.org/yangsters/">YANGsters</a>
+<ul class="sub-menu">
+	<li id="menu-item-223" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-223"><a href="https://1.ieee802.org/yangsters/yangsters-call-information/">YANGsters Call Information</a></li>
+</ul>
+</li>
+<li id="menu-item-345" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-345"><a href="https://1.ieee802.org/archives/">Archived Activities</a>
+<ul class="sub-menu">
+	<li id="menu-item-58" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-58"><a href="https://1.ieee802.org/archives/lasg/">Local Address Study Group</a></li>
+</ul>
+</li>
+</ul></div>
+        </nav>
+
+        <div class="dynamic-sidebar dynamic-sidebar-navigation">
+            <div class="row sidebarContent">
+                <div class="col-md-12">
+                    <div class="widget"><ul><h4 class="widgetTitle">Groups</h4>		<ul>
+	<li class="cat-item cat-item-82"><a href="https://1.ieee802.org/category/agenda/">Agenda</a>
+</li>
+	<li class="cat-item cat-item-19"><a href="https://1.ieee802.org/category/meetings/">Meetings</a>
+</li>
+	<li class="cat-item cat-item-50"><a href="https://1.ieee802.org/category/minutes/">Minutes</a>
+</li>
+		</ul>
+</ul></div>                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="pageContainer">
+	<article class="entry entryTypePost">
+    <header class="entryHeader">
+        <h1 class="entryTitle">
+            P802.1AS-Rev – Timing and Synchronization for Time-Sensitive Applications        </h1>
+    </header>
+
+    <div class="entryContent">
+        <div id="toc_container" class="no_bullets"><p class="toc_title">Contents <span class="toc_toggle">[<a href="https://1.ieee802.org/tsn/802-1as-rev/#">hide</a>]</span></p><ul class="toc_list"><li><a href="https://1.ieee802.org/tsn/802-1as-rev/#Current_Status"><span class="toc_number toc_depth_1">1</span> Current Status</a></li><li><a href="https://1.ieee802.org/tsn/802-1as-rev/#Archive"><span class="toc_number toc_depth_1">2</span> Archive</a></li><li><a href="https://1.ieee802.org/tsn/802-1as-rev/#Presentations"><span class="toc_number toc_depth_1">3</span> Presentations</a></li></ul></div>
+<p class="middle0">The full title of this PAR is ” Standard for Local and Metropolitan Area Networks – Timing and Synchronization for Time-Sensitive Applications”.</p>
+<p class="middle0">Note: this revision project supersedes and incorporates material developed in the&nbsp;&nbsp;<a href="http://www.ieee802.org/1/pages/802.1asbt.html">802.1ASbt amendment</a>.</p>
+<p class="middle0">This standard specifies the protocol and procedures used to ensure that the synchronization requirements are met for time-sensitive applications, such as audio, video, and time-sensitive control, across networks; for example, IEEE 802 and similar media. This includes the maintenance of synchronized time during normal operation and following addition, removal, or failure of network components and network reconfiguration. It specifies the use of IEEE Std 1588 specifications where applicable in the context of IEEE Std 802.1Q. Synchronization to an externally provided timing signal (e.g., a recognized timing standard such as UTC or TAI) is not part of this standard but is not precluded.</p>
+<p class="middle0">This standard enables stations attached to bridged LANs to meet the respective jitter, wander, and time synchronization requirements for time-sensitive applications. This includes applications that involve multiple streams delivered to multiple endpoints. To facilitate the widespread use of bridged LANs for these applications, synchronization information is one of the components needed at each network element where time-sensitive application data are mapped or demapped or a time-sensitive function is performed. This standard leverages the work of the IEEE 1588 Working Group by developing the additional specifications needed to address these requirements.</p>
+<h2><span id="Current_Status"><strong>Current Status</strong></span></h2>
+<table width="100%">
+<tbody>
+<tr id="sts">
+<td align="right"><b>Status</b></td>
+<td>PAR approved Feb 16, 2015, WG ballot</td>
+</tr>
+<tr>
+<td align="right"><b>Editor</b></td>
+<td><a href="mailto:gmgarner@alum.mit.edu">Geoff Garner</a></td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<h2><span id="Archive"><strong>Archive</strong></span></h2>
+<table width="100%">
+<tbody>
+<tr>
+<th width="20%">Date</th>
+<th>Document</th>
+</tr>
+<tr>
+<td align="right">29 Mar 2018</td>
+<td><a href="http://www.ieee802.org/1/files/private/as-rev-drafts/d7/802-1AS-rev-d7-0.pdf">802.1AS-REV, Draft 7.0 (WG #3)</a></td>
+</tr>
+<tr>
+<td align="right">13 Mar 2018</td>
+<td><a href="http://www.ieee802.org/1/files/private/as-rev-drafts/d6/802-1AS-rev-d6-0-dis.pdf">802.1AS-Rev, Draft 6.0 WG comment dispositions</a></td>
+</tr>
+<tr>
+<td align="right">21 Feb 2018</td>
+<td><a href="http://www.ieee802.org/1/files/private/as-rev-drafts/d6/802-1AS-rev-d6-0-pdis-v01.pdf">802.1AS-Rev, Draft 6.0 WG proposed comment dispositions (v1)</a></td>
+</tr>
+<tr>
+<td align="right">19 Jan 2018</td>
+<td><a href="http://www.ieee802.org/1/files/private/as-rev-drafts/d6/802-1AS-rev-d6-0-pdis.pdf">802.1AS-Rev, Draft 6.0 WG proposed comment dispositions (v0)</a></td>
+</tr>
+<tr>
+<td align="right">13 Dec 2017</td>
+<td><a href="http://www.ieee802.org/1/files/private/as-rev-drafts/d6/802-1AS-rev-d6-0.pdf">802.1AS-Rev, Draft 6.0</a><a href="http://www.ieee802.org/1/files/private/as-rev-drafts/d7/802-1AS-rev-d7-0.pdf"> (WG #2)</a></td>
+</tr>
+<tr>
+<td align="right">29 Oct 2017</td>
+<td><a href="http://www.ieee802.org/1/files/private/as-rev-drafts/d5/802-1AS-rev-d5-1.pdf">802.1AS-Rev, Draft 5.1</a></td>
+</tr>
+<tr>
+<td align="right">06 Sep 2017</td>
+<td><a href="http://www.ieee802.org/1/files/private/as-rev-drafts/d5/802-1AS-rev-d5-0-dis-v1.pdf">802.1AS-Rev, Draft 5.0 WG comment dispositions (v1)</a></td>
+</tr>
+<tr>
+<td align="right">06 Sep 2017</td>
+<td><a href="http://www.ieee802.org/1/files/private/as-rev-drafts/d5/802-1AS-rev-d5-0-dis.pdf">802.1AS-Rev, Draft 5.0 WG comment dispositions (v0)</a></td>
+</tr>
+<tr>
+<td align="right">28 Aug 2017</td>
+<td><a href="http://www.ieee802.org/1/files/private/as-rev-drafts/d5/802-1AS-rev-d5-0-pdis-v6.pdf">802.1AS-Rev, Draft 5.0 WG proposed comment dispositions (v6)</a></td>
+</tr>
+<tr>
+<td align="right">21 Aug 2017</td>
+<td><a href="http://www.ieee802.org/1/files/private/as-rev-drafts/d5/802-1AS-rev-d5-0-pdis-v5.pdf">802.1AS-Rev, Draft 5.0 WG proposed comment dispositions (v5)</a></td>
+</tr>
+<tr>
+<td align="right">14 Aug 2017</td>
+<td><a href="http://www.ieee802.org/1/files/private/as-rev-drafts/d5/802-1AS-rev-d5-0-pdis-v4.pdf">802.1AS-Rev, Draft 5.0 WG proposed comment dispositions (v4)</a></td>
+</tr>
+<tr>
+<td align="right">07 Aug 2017</td>
+<td><a href="http://www.ieee802.org/1/files/private/as-rev-drafts/d5/802-1AS-rev-d5-0-pdis-v3.pdf">802.1AS-Rev, Draft 5.0 WG proposed comment dispositions (v3)</a></td>
+</tr>
+<tr>
+<td align="right">31 Jul 2017</td>
+<td><a href="http://www.ieee802.org/1/files/private/as-rev-drafts/d5/802-1AS-rev-d5-0-pdis-v2.pdf">802.1AS-Rev, Draft 5.0 WG proposed comment dispositions (v2)</a></td>
+</tr>
+<tr>
+<td align="right">24 Jul 2017</td>
+<td><a href="http://www.ieee802.org/1/files/private/as-rev-drafts/d5/802-1AS-rev-d5-0-pdis-v1.pdf">802.1AS-Rev, Draft 5.0 WG proposed comment dispositions (v1)</a></td>
+</tr>
+<tr>
+<td align="right">24 Jul 2017</td>
+<td><a href="http://www.ieee802.org/1/files/private/as-rev-drafts/d5/802-1AS-rev-d5-0-pdis.pdf">802.1AS-Rev, Draft 5.0 WG proposed comment dispositions (v0)</a></td>
+</tr>
+<tr>
+<td align="right">12 June 2017</td>
+<td><a href="http://www.ieee802.org/1/files/private/as-rev-drafts/d5/802-1AS-rev-d5-0.pdf">802.1AS-Rev, Draft 5.0</a><a href="http://www.ieee802.org/1/files/private/as-rev-drafts/d7/802-1AS-rev-d7-0.pdf"> (WG #1)</a></td>
+</tr>
+<tr>
+<td align="right">18 May 2017</td>
+<td><a href="http://www.ieee802.org/1/files/private/as-rev-drafts/d4/802-1AS-rev-d4-5-dis.pdf">802.1AS-Rev, Draft 4.5 TG comment dispositions</a></td>
+</tr>
+<tr>
+<td align="right">10 Mar 2017</td>
+<td><a href="http://www.ieee802.org/1/files/private/as-rev-drafts/d4/802-1AS-rev-d4-5-pdis-v1.pdf">802.1AS-Rev, Draft 4.5 TG proposed comment dispositions (v1)</a></td>
+</tr>
+<tr>
+<td align="right">05 Mar 2017</td>
+<td><a href="http://www.ieee802.org/1/files/private/as-rev-drafts/d4/802-1AS-rev-d4-5-pdis.pdf">802.1AS-Rev, Draft 4.5 TG proposed comment dispositions (v0)</a></td>
+</tr>
+<tr>
+<td align="right">10 Feb 2017</td>
+<td><a href="http://www.ieee802.org/1/files/private/as-rev-drafts/d4/802-1AS-rev-d4-5.pdf">802.1AS-Rev, Draft 4.5 (TG)</a></td>
+</tr>
+<tr>
+<td align="right">19 Jan 2017</td>
+<td><a href="http://www.ieee802.org/1/files/private/as-rev-drafts/d4/802-1AS-rev-d4-4.pdf">802.1AS-Rev, Draft 4.4</a></td>
+</tr>
+<tr>
+<td align="right">13 Jan 2017</td>
+<td><a href="http://www.ieee802.org/1/files/private/as-rev-drafts/d4/802-1AS-rev-d4-3.pdf">802.1AS-Rev, Draft 4.3</a></td>
+</tr>
+<tr>
+<td align="right">21 Nov 2016</td>
+<td><a href="http://www.ieee802.org/1/files/private/as-rev-drafts/d4/802-1AS-rev-d4-2-dis.pdf">802.1AS-Rev, Draft 4.2 TG comment dispositions</a></td>
+</tr>
+<tr>
+<td align="right">20 Nov 2016</td>
+<td><a href="http://www.ieee802.org/1/files/private/as-rev-drafts/d4/802-1AS-rev-d4-2-pdis-v2.pdf">802.1AS-Rev, Draft 4.2 TG proposed comment dispositions (v2)</a></td>
+</tr>
+<tr>
+<td align="right">04 Nov 2016</td>
+<td><a href="http://www.ieee802.org/1/files/private/as-rev-drafts/d4/802-1AS-rev-d4-2-pdis-v1.pdf">802.1AS-Rev, Draft 4.2 TG proposed comment dispositions (v1)</a></td>
+</tr>
+<tr>
+<td align="right">28 Oct 2016</td>
+<td><a href="http://www.ieee802.org/1/files/private/as-rev-drafts/d4/802-1AS-rev-d4-2-pdis.pdf">802.1AS-Rev, Draft 4.2 TG proposed comment dispositions (v0)</a></td>
+</tr>
+<tr>
+<td align="right">07 Oct 2016</td>
+<td><a href="http://www.ieee802.org/1/files/private/as-rev-drafts/d4/802-1AS-rev-d4-2.pdf">802.1AS-Rev, Draft 4.2</a><a href="http://www.ieee802.org/1/files/private/as-rev-drafts/d4/802-1AS-rev-d4-5.pdf"> (TG)</a></td>
+</tr>
+<tr>
+<td align="right">08 Sep 2016</td>
+<td><a href="http://www.ieee802.org/1/files/private/as-rev-drafts/d4/802-1AS-rev-d4-1.pdf">802.1AS-Rev, Draft 4.1</a></td>
+</tr>
+<tr>
+<td align="right">22 Jul 2016</td>
+<td><a href="http://www.ieee802.org/1/files/private/as-rev-drafts/d4/802-1AS-rev-d4-0.pdf">802.1AS-Rev, Draft 4.0</a></td>
+</tr>
+<tr>
+<td align="right">13 Jul 2016</td>
+<td><a href="http://www.ieee802.org/1/files/private/as-rev-drafts/d3/802-1AS-Rev-d3-0-dis.pdf">802.1AS-Rev, Draft 3.0 TG comment dispositions</a></td>
+</tr>
+<tr>
+<td align="right">26 May 2016</td>
+<td><a href="http://www.ieee802.org/1/files/private/as-rev-drafts/d3/802-1AS-Rev-d3-0-pdis-v1.pdf">802.1AS-Rev, Draft 3.0 TG proposed comment dispositions (v1)</a></td>
+</tr>
+<tr>
+<td align="right">20 May 2016</td>
+<td><a href="http://www.ieee802.org/1/files/private/as-rev-drafts/d3/802-1AS-Rev-d3-0-pdis.pdf">802.1AS-Rev, Draft 3.0 TG proposed comment dispositions (v0)</a></td>
+</tr>
+<tr>
+<td align="right">29 Apr 2016</td>
+<td><a href="http://www.ieee802.org/1/files/private/as-rev-drafts/d3/802-1AS-rev-d3-0.pdf">802.1AS-Rev, Draft 3.0</a><a href="http://www.ieee802.org/1/files/private/as-rev-drafts/d4/802-1AS-rev-d4-5.pdf"> (TG)</a></td>
+</tr>
+<tr>
+<td align="right">13 Mar 2016</td>
+<td><a href="http://www.ieee802.org/1/files/private/as-rev-drafts/d2/802-1AS-Rev-d2-0-dis-v1.pdf">802.1AS-Rev, Draft 2.0 TG comment dispositions (v1)</a></td>
+</tr>
+<tr>
+<td align="right">29 Feb 2016</td>
+<td><a href="http://www.ieee802.org/1/files/private/as-rev-drafts/d2/802-1AS-Rev-d2-0-dis.pdf">802.1AS-Rev, Draft 2.0 TG comment dispositions (v0)</a></td>
+</tr>
+<tr>
+<td align="right">02 Feb 2016</td>
+<td><a href="http://www.ieee802.org/1/files/private/as-rev-drafts/d2/802-1AS-rev-d2-0-pdis-v1.pdf">802.1AS-Rev, Draft 2.0 TG proposed comment dispositions (v1)</a></td>
+</tr>
+<tr>
+<td align="right">10 Jul 2015</td>
+<td><a href="http://www.ieee802.org/1/files/private/as-rev-drafts/d2/802-1AS-rev-d2-0-pdis.pdf">802.1AS-Rev, Draft 2.0 TG proposed comment dispositions (v0)</a></td>
+</tr>
+<tr>
+<td align="right">09 Oct 2015</td>
+<td><a href="http://www.ieee802.org/1/files/private/as-rev-drafts/d2/802-1AS-rev-d2-0.pdf">802.1AS-Rev, Draft 2.0</a><a href="http://www.ieee802.org/1/files/private/as-rev-drafts/d4/802-1AS-rev-d4-5.pdf"> (TG)</a></td>
+</tr>
+<tr>
+<td align="right">11 Sep 2015</td>
+<td><a href="http://www.ieee802.org/1/files/private/as-rev-drafts/d1/802-1AS-Rev-d1-0-dis.pdf">802.1AS-Rev, Draft 1.0 TG comment dispositions</a></td>
+</tr>
+<tr>
+<td align="right">03 Sep 2015</td>
+<td><a href="http://www.ieee802.org/1/files/private/as-rev-drafts/d1/802-1AS-Rev-d1-0-pdis-v1.pdf">802.1AS-Rev, Draft 1.0 TG proposed comment dispositions (v1)</a></td>
+</tr>
+<tr>
+<td align="right">10 Jul 2015</td>
+<td><a href="http://www.ieee802.org/1/files/private/as-rev-drafts/d1/802-1AS-Rev-d1-0-pdis.pdf">802.1AS-Rev, Draft 1.0 TG proposed comment dispositions (v0)</a></td>
+</tr>
+<tr>
+<td align="right">15 May 2015</td>
+<td><a href="http://www.ieee802.org/1/files/private/as-rev-drafts/d1/802-1AS-rev-d1-0.pdf">802.1AS-Rev, Draft 1.0</a><a href="http://www.ieee802.org/1/files/private/as-rev-drafts/d4/802-1AS-rev-d4-5.pdf"> (TG)</a></td>
+</tr>
+<tr>
+<td align="right">26 Feb 2015</td>
+<td><a href="http://www.ieee802.org/1/files/private/as-rev-drafts/d0/802-1AS-rev-d0-9.pdf">802.1AS-Rev, Draft 0.9</a></td>
+</tr>
+<tr>
+<td align="right">09 Jan 2015</td>
+<td><a href="http://www.ieee802.org/1/files/private/as-rev-drafts/d0/802-1AS-rev-d0-8.pdf">802.1AS-Rev, Draft 0.8</a></td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<h2><span id="Presentations">Presentations</span></h2>
+<p><b>Please see the public documents repository for presentations on this topic</b></p>
+<table width="100%">
+<tbody>
+<tr>
+<th width="20%">Date</th>
+<th>Document</th>
+</tr>
+<tr>
+<td colspan="2"><strong>2018 documents</strong></td>
+</tr>
+<tr>
+<td align="right">26 Jan 2018</td>
+<td><a href="http://www.ieee802.org/1/files/public/docs2018/as-garner-802-1AS-Rev-d6-0-wg-ballot-editors-report-01-18-v03.pdf">P802.1AS-Rev/D6.0 Editor’s Report,&nbsp;Proposed Comment Resolution for WG Ballot Revision1 (v3)</a>&nbsp; —&nbsp;Geoffrey M. Garner</td>
+</tr>
+<tr>
+<td align="right">26 Jan 2018</td>
+<td><a href="http://www.ieee802.org/1/files/public/docs2018/as-garner-802-1AS-Rev-d6-0-wg-ballot-editors-report-01-18-v02.pdf">P802.1AS-Rev/D6.0 Editor’s Report,&nbsp;Proposed Comment Resolution for WG Ballot Revision1 (v2)</a>&nbsp; —&nbsp;Geoffrey M. Garner</td>
+</tr>
+<tr>
+<td align="right">26 Jan 2018</td>
+<td><a href="http://www.ieee802.org/1/files/public/docs2018/as-garner-802-1AS-Rev-d6-0-wg-ballot-editors-report-01-18-v01.pdf">P802.1AS-Rev/D6.0 Editor’s Report,&nbsp;Proposed Comment Resolution for WG Ballot Revision1 (v1)</a>&nbsp;—&nbsp;Geoffrey M. Garner<a href="http://www.ieee802.org/1/files/public/docs2018/as-garner-802-1AS-Rev-d6-0-wg-ballot-editors-report-01-18-v01.pdf"><br>
+</a></td>
+</tr>
+<tr>
+<td align="right">22 Jan 2018</td>
+<td><a href="http://www.ieee802.org/1/files/public/docs2018/as-garner-802-1AS-Rev-d6-0-wg-ballot-editors-report-01-18.pdf">P802.1AS-Rev/D6.0 Editor’s Report,&nbsp;Proposed Comment Resolution for WG Ballot</a>&nbsp;—&nbsp;Geoffrey M. Garner</td>
+</tr>
+<tr>
+<td colspan="2"><strong>2017 documents</strong></td>
+</tr>
+<tr>
+<td align="right">08 Nov 2017</td>
+<td><a href="http://www.ieee802.org/1/files/public/docs2017/as-garner-802-1as-d5-1-status-and-several-items-needing-resolution-1117-v01.pdf">Status of 802.1AS-Rev/D5.1 and Questions on Several Items Needing Resolution Revision 1</a>&nbsp;—&nbsp;Geoffrey M. Garner</td>
+</tr>
+<tr>
+<td align="right">06 Nov 2017</td>
+<td><a href="http://www.ieee802.org/1/files/public/docs2017/as-garner-802-1as-d5-1-status-and-several-items-needing-resolution-1117.pdf">Status of 802.1AS-Rev/D5.1 and Questions on Several Items Needing Resolution</a>&nbsp;—&nbsp;Geoffrey M. Garner</td>
+</tr>
+<tr>
+<td align="right">26 Oct 2017</td>
+<td><a href="http://www.ieee802.org/1/files/public/docs2017/as-cummings-wfa-proposal-1117-v1.pdf">Proposed communication from the IEEE 802.1 working group to the Wi-Fi Alliance</a>&nbsp;—&nbsp;Rodney Cummings</td>
+</tr>
+<tr>
+<td align="right">23 Oct 2017</td>
+<td><a href="http://www.ieee802.org/1/files/public/docs2017/as-garner-bullet-points-for-drafting-wfa-liaison-1017.pptx">Collection of Bullet Points for use in drafting WFA Liaison</a>&nbsp;—&nbsp;Geoffrey M. Garner</td>
+</tr>
+<tr>
+<td align="right">14 Aug 2017</td>
+<td><a href="http://www.ieee802.org/1/files/public/docs2017/as-garner-802-1AS-Rev-d5-0-wg-ballot-editors-report-07-17-v5.pdf">P802.1AS-Rev/D5.0 Editor’s Report, Comment Resolution for 1st WG Ballot Revision 5 (after 8/28/2017 call)</a>&nbsp;—&nbsp;Geoffrey M. Garner</td>
+</tr>
+<tr>
+<td align="right">14 Aug 2017</td>
+<td><a href="http://www.ieee802.org/1/files/public/docs2017/as-garner-802-1AS-Rev-d5-0-wg-ballot-editors-report-07-17-v4.pdf">P802.1AS-Rev/D5.0 Editor’s Report,&nbsp;Comment Resolution for 1st WG Ballot Revision 4 (after 8/21/2017 call)</a>&nbsp;—&nbsp;Geoffrey M. Garner</td>
+</tr>
+<tr>
+<td align="right">14 Aug 2017</td>
+<td><a href="http://www.ieee802.org/1/files/public/docs2017/as-garner-802-1AS-Rev-d5-0-wg-ballot-editors-report-07-17-v3.pdf">P802.1AS-Rev/D5.0 Editor’s Report,&nbsp;Comment Resolution for 1st WG Ballot Revision 3 (after 8/14/2017 call)</a>&nbsp;—&nbsp;Geoffrey M. Garner</td>
+</tr>
+<tr>
+<td align="right">07 Aug 2017</td>
+<td><a href="http://www.ieee802.org/1/files/public/docs2017/as-garner-802-1AS-Rev-d5-0-wg-ballot-editors-report-07-17-v2.pdf">P802.1AS-Rev/D5.0 Editor’s Report,&nbsp;Comment Resolution for 1st WG Ballot Revision 2 (after 8/7/2017 call)</a>&nbsp;—&nbsp;Geoffrey M. Garner</td>
+</tr>
+<tr>
+<td align="right">31 Jul 2017</td>
+<td><a href="http://www.ieee802.org/1/files/public/docs2017/as-garner-802-1AS-Rev-d5-0-wg-ballot-editors-report-07-17-v1.pdf">P802.1AS-Rev/D5.0 Editor’s Report,&nbsp;Comment Resolution for 1st WG Ballot Revision 1 (after 7/31/2017 call)</a>&nbsp;—&nbsp;Geoffrey M. Garner</td>
+</tr>
+<tr>
+<td align="right">26 Jul 2017</td>
+<td><a href="http://www.ieee802.org/1/files/public/docs2017/as-garner-802-1AS-Rev-d5-0-wg-ballot-editors-report-07-17.pdf">P802.1AS-Rev/D5.0 Editor’s Report,&nbsp;Comment Resolution for 1st WG Ballot</a>&nbsp;—&nbsp;Geoffrey M. Garner</td>
+</tr>
+<tr>
+<td align="right">13 Jul 2017</td>
+<td><a href="http://www.ieee802.org/1/files/public/docs2017/as-boiger-pdelay-802-1AS-vs-1588-0717-v02.pdf">Pdelay – IEEE P802.1AS-Rev vs IEEE P1588-Rev (v2)</a>&nbsp;—&nbsp;Christian Boiger</td>
+</tr>
+<tr>
+<td align="right">12 Jul 2017</td>
+<td><a href="http://www.ieee802.org/1/files/public/docs2017/as-rev-PAR-modification-comments-0717-v01.pdf">Resolution of Comments on Project Authorization Request (PAR) modification</a>&nbsp;—&nbsp;Geoffrey M. Garner</td>
+</tr>
+<tr>
+<td align="right">11 Jul 2017</td>
+<td><a href="http://www.ieee802.org/1/files/public/docs2017/as-boiger-pdelay-802-1AS-vs-1588-0717-v01.pdf">Pdelay – IEEE P802.1AS-Rev vs IEEE P1588-Rev (v1)</a>&nbsp;—&nbsp;Christian Boiger</td>
+</tr>
+<tr>
+<td align="right">11 Jul 2017</td>
+<td><a href="http://www.ieee802.org/1/files/public/docs2017/as-rev-PAR-modification-0517-v02.pdf">Project Authorization Request (PAR) modification (v2)</a>&nbsp;—&nbsp;Geoffrey M. Garner</td>
+</tr>
+<tr>
+<td align="right">10 Jul 2017</td>
+<td><a href="http://www.ieee802.org/1/files/public/docs2017/as-rev-venkatesan-use-of-FTM-0717-v01.pdf">IEEE 802.1AS REV D5.0 Review Comments (v1)</a>&nbsp;—&nbsp;Ganesh Venkatesan</td>
+</tr>
+<tr>
+<td align="right">10 Jul 2017</td>
+<td><a href="http://www.ieee802.org/1/files/public/docs2017/as-venkatesan-Review-Comments-on-the-use-of-FTM-07-17.pdf">IEEE 802.1AS REV D5.0 Review Comments</a>&nbsp;—&nbsp;Ganesh Venkatesan</td>
+</tr>
+<tr>
+<td align="right">03 Jun 2017</td>
+<td><a href="http://www.ieee802.org/1/files/public/docs2017/as-rev-PAR-modification-0517-v01.pdf">Project Authorization Request (PAR) modification (v1)</a>&nbsp;—&nbsp;Geoffrey M. Garner</td>
+</tr>
+<tr>
+<td align="right">14 May 2017</td>
+<td><a href="http://www.ieee802.org/1/files/public/docs2017/as-farkas-P802-1AS-Rev-PAR-modification-0517-v01.pdf">Project Authorization Request (PAR) modification (v1)</a>&nbsp;— János Farkas</td>
+</tr>
+<tr>
+<td align="right">13 Mar 2017</td>
+<td><a href="http://www.ieee802.org/1/files/public/docs2017/as-gutierrez-yang-0317-v01.pdf">Proposal to Add YANG Model to IEEE 802.1AS-rev</a>&nbsp;— Marina Gutiérrez</td>
+</tr>
+<tr>
+<td align="right">13 Mar 2017</td>
+<td><a href="http://www.ieee802.org/1/files/public/docs2017/as-garner-802-1AS-Rev-par-revision-0317.pdf">802.1AS-Rev PAR Revision</a>&nbsp;—&nbsp;Geoffrey M. Garner</td>
+</tr>
+<tr>
+<td align="right">12 Mar 2017</td>
+<td><a href="http://www.ieee802.org/1/files/public/docs2017/as-cummings-yang-roadmap-proposal-0317-v0.pdf">802.1AS-rev: YANG Roadmap Proposal</a>&nbsp;—&nbsp;Rodney Cummings</td>
+</tr>
+<tr>
+<td align="right">27 Feb 2017</td>
+<td><a href="http://www.ieee802.org/1/files/public/docs2017/as-garner-optional-1588-states-not-used-in-as-rev-0217.pdf">Optional 1588 States not used in 802.1AS-Rev</a>&nbsp;—&nbsp;Geoffrey M. Garner</td>
+</tr>
+<tr>
+<td align="right">27 Feb 2017</td>
+<td><a href="http://www.ieee802.org/1/files/public/docs2017/as-garner-802-1as-d5-0-comment-epon-managed-objects-0917.pdf">Items Related to Several Managed Objects Pertaining to EPON Transport in 802.1AS-Rev</a>&nbsp;—&nbsp;Geoffrey M. Garner</td>
+</tr>
+<tr>
+<td colspan="2"><strong>2016 documents</strong></td>
+</tr>
+<tr>
+<td align="right">07 Nov 2016</td>
+<td><a href="http://www.ieee802.org/1/files/public/docs2016/as-garner-text-for-as-rev-7-2-4-1116-v01.pdf">Draft Text for Beginning of 802.1ASRev/D4.2, Subclause 7.2.4</a>&nbsp;—&nbsp;Geoffrey M. Garner</td>
+</tr>
+<tr>
+<td align="right">03 Nov 2016</td>
+<td><a href="http://www.ieee802.org/1/files/public/docs2016/as-cummings-data-set-enhancements-1116-v00.pdf">802.1AS-Rev: Data Set Enhancements</a>&nbsp;—&nbsp;Rodney Cummings</td>
+</tr>
+<tr>
+<td align="right">12 Sep 2016</td>
+<td><a href="http://www.ieee802.org/1/files/public/docs2016/as-garner-d4-1-intro-0916.pdf">802.1AS-Rev/D4.1 Editor’s Summary</a>&nbsp;—&nbsp;Geoffrey M. Garner</td>
+</tr>
+<tr>
+<td align="right">25 Jul 2016</td>
+<td><a href="http://www.ieee802.org/1/files/public/docs2016/as-cummings-profile-gateway-0716-v01.pdf">802.1AS-rev: Assumptions for Profile Gateway (v1)</a>&nbsp;—&nbsp;Rodney Cummings</td>
+</tr>
+<tr>
+<td align="right">22 Jul 2016</td>
+<td><a href="http://www.ieee802.org/1/files/public/docs2016/as-cummings-profile-gateway-0716-v00.pdf">802.1AS-rev: Assumptions for Profile Gateway (v0)</a>&nbsp;—&nbsp;Rodney Cummings</td>
+</tr>
+<tr>
+<td align="right">18 Jul 2016</td>
+<td><a href="http://www.ieee802.org/1/files/public/docs2016/as-aregev-measuring-recovered-clock-quality.pdf">Measuring recovered clock quality</a>&nbsp;—&nbsp;Bogdan Tenea</td>
+</tr>
+<tr>
+<td align="right">20 May 2016</td>
+<td><a href="http://www.ieee802.org/1/files/public/docs2016/as-cummings-resolving-0516-v00.pdf">Resolving 802.1AS-rev</a>&nbsp;—&nbsp;Rodney Cummings</td>
+</tr>
+<tr>
+<td align="right">14 May 2016</td>
+<td><a href="http://www.ieee802.org/1/files/public/docs2016/as-garner-state-machines-specs-ftm.pdf">Discussion of New State Machines and Specifications for Transport of Time Sync in 802.1AS using 802.11 FTM</a>&nbsp;—&nbsp;Geoffrey M. Garner</td>
+</tr>
+<tr>
+<td align="right">04 Apr 2016</td>
+<td><a href="http://www.ieee802.org/1/files/public/docs2016/as-tenea-gPTP-bridge-chaining-0416.pdf">gPTP switchover time</a>&nbsp;—&nbsp;Bogdan Tenea</td>
+</tr>
+<tr>
+<td align="right">16 Mar 2016</td>
+<td><a href="http://www.ieee802.org/1/files/public/docs2016/as-pannell-interoperable-Pdelays-0316-v1.pdf">Interoperable Pdelays in IEEE 802.1AS-Rev</a>&nbsp;— Don Pannell</td>
+</tr>
+<tr>
+<td align="right">14 Mar 2016</td>
+<td><a href="http://www.ieee802.org/1/files/public/docs2016/as-garner-summary-of-items-for-802-1AS-Rev-next-draft-0316.pdf">Summary of Major Items Needed for 802.1AS-Rev/D3.0</a>&nbsp;—&nbsp;Geoffrey M. Garner</td>
+</tr>
+<tr>
+<td align="right">14 Mar 2016</td>
+<td><a href="http://www.ieee802.org/1/files/public/docs2016/as-cummings-1588-common-p2p-0316-v1.pdf">Contribution to the Precise Networked Clock Synchronization&nbsp;Working Group for the Revision of IEEE 1588-2008</a>&nbsp;—&nbsp;Rodney Cummings</td>
+</tr>
+<tr>
+<td align="right">19 Jan 2016</td>
+<td><a href="http://www.ieee802.org/1/files/public/docs2016/asrev-mjt-sourceportidentity-and-version-trace-v2-0116.pdf">sourcePortIdentity: optional alternate meaning (and “path version trace” and “path version test”) (v2)</a>&nbsp;—&nbsp;Michael Johas Teener</td>
+</tr>
+<tr>
+<td align="right">18 Jan 2016</td>
+<td><a href="http://www.ieee802.org/1/files/public/docs2016/asrev-mjt-sourceportidentity-and-version-trace-v1-0116.pdf">optional alternate sourcePortID meaning (and “path version trace” and “path version test”) (v1)</a>&nbsp;—&nbsp;Michael Johas Teener</td>
+</tr>
+<tr>
+<td align="right">18 Jan 2016</td>
+<td><a href="http://www.ieee802.org/1/files/public/docs2016/asrev-caldana-FTM-parameters-0116-v01.pdf">FTM Parameters for 802.1AS</a>&nbsp;—&nbsp;Carlos Aldana</td>
+</tr>
+<tr>
+<td colspan="2"><strong>2015 documents</strong></td>
+</tr>
+<tr>
+<td align="right">02 Dec 2015</td>
+<td><a href="http://www.ieee802.org/1/files/public/docs2015/as-cummings-security-notes-1115-v2.pdf">Notes from Discussion of 802.1AS Security (v2)</a>&nbsp;—&nbsp;Rodney Cummings</td>
+</tr>
+<tr>
+<td align="right">25 Nov 2015</td>
+<td><a href="http://www.ieee802.org/1/files/public/docs2015/as-cummings-security-notes-1115-v1.pdf">Notes from Discussion of 802.1AS Security (v1)</a>&nbsp;—&nbsp;Rodney Cummings</td>
+</tr>
+<tr>
+<td colspan="2"><strong>2011 documents</strong></td>
+</tr>
+<tr>
+<td align="right">07 Nov 2011</td>
+<td><a href="http://www.ieee802.org/1/files/public/docs2011/asbt-huang-measurement-of-link-delay-asymmetry-1031-v00.pdf">Management Support for Automatic Measurement of Link Delay Asymmetry</a>&nbsp;—&nbsp;Lu Huang</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+    </div>
+
+    <footer class="entryMeta">
+            </footer>
+</article></div>
+
+<div class="asideMenuButton">
+    <header class="asideMenuButtonTitle">Sidebar</header>
+    <div class="asideMenuButtonContent">
+        <hr>
+        <hr>
+        <hr>
+    </div>
+</div>
+
+<aside>
+    <div class="aside-container container-full">
+        <div class="customSidebar">
+                            <div class="row sidebarContent">
+                    <div class="col-md-12">
+                                            </div>
+                </div>
+                        </div>
+
+        <div class="dynamicSidebar">
+            <div class="row sidebarContent">
+                <div class="col-md-12">
+                    <div class="widget"><form role="search" method="get" class="search-form" action="https://1.ieee802.org/"><label><input type="search" class="search-field" placeholder="Search" value="" name="s" title="Search"></label><input type="submit" class="search-submit" value="Search"></form></div><div class="widget"><h4 class="widgetTitle">Calendar</h4></div>		<div class="widget">		<h4 class="widgetTitle">Recent Posts</h4>		<ul>
+											<li>
+					<a href="https://1.ieee802.org/july-2018-plenary-meeting-in-san-diego-ca-usa/">July 2018 Plenary Meeting in San Diego, CA, USA</a>
+									</li>
+											<li>
+					<a href="https://1.ieee802.org/may-2018-interim-meeting-in-pittsburgh-pa-usa/">May 2018 Interim Meeting in Pittsburgh, PA, USA</a>
+									</li>
+											<li>
+					<a href="https://1.ieee802.org/march-2018-plenary-meeting-in-rosemont-il-usa/">March 2018 Plenary Meeting in Rosemont, IL, USA</a>
+									</li>
+											<li>
+					<a href="https://1.ieee802.org/january-2018-interim-meeting-in-geneva-switzerland/">January 2018 Interim Meeting in Geneva, Switzerland</a>
+									</li>
+											<li>
+					<a href="https://1.ieee802.org/november-2017-plenary-meeting-in-orlando-fl-usa/">November 2017 Plenary Meeting in Orlando, FL, USA</a>
+									</li>
+					</ul>
+		</div><div class="widget"><h4 class="widgetTitle">Categories</h4>		<ul>
+	<li class="cat-item cat-item-82"><a href="https://1.ieee802.org/category/agenda/">Agenda</a> (2)
+</li>
+	<li class="cat-item cat-item-19"><a href="https://1.ieee802.org/category/meetings/">Meetings</a> (5)
+</li>
+	<li class="cat-item cat-item-50"><a href="https://1.ieee802.org/category/minutes/">Minutes</a> (12)
+</li>
+		</ul>
+</div><div class="widget"><h4 class="widgetTitle">Tags</h4><div class="tagcloud"><a href="https://1.ieee802.org/tag/1x/" class="tag-cloud-link tag-link-63 tag-link-position-1" style="font-size: 16.2352941176pt;" aria-label="1X (7 items)">1X</a>
+<a href="https://1.ieee802.org/tag/ac-rev/" class="tag-cloud-link tag-link-33 tag-link-position-2" style="font-size: 8pt;" aria-label="AC-REV (1 item)">AC-REV</a>
+<a href="https://1.ieee802.org/tag/as-rev/" class="tag-cloud-link tag-link-26 tag-link-position-3" style="font-size: 8pt;" aria-label="AS-REV (1 item)">AS-REV</a>
+<a href="https://1.ieee802.org/tag/auto-attach/" class="tag-cloud-link tag-link-31 tag-link-position-4" style="font-size: 8pt;" aria-label="Auto Attach (1 item)">Auto Attach</a>
+<a href="https://1.ieee802.org/tag/br/" class="tag-cloud-link tag-link-17 tag-link-position-5" style="font-size: 8pt;" aria-label="BR (1 item)">BR</a>
+<a href="https://1.ieee802.org/tag/call-for-comments/" class="tag-cloud-link tag-link-114 tag-link-position-6" style="font-size: 10.4705882353pt;" aria-label="Call for Comments (2 items)">Call for Comments</a>
+<a href="https://1.ieee802.org/tag/cn/" class="tag-cloud-link tag-link-9 tag-link-position-7" style="font-size: 10.4705882353pt;" aria-label="CN (2 items)">CN</a>
+<a href="https://1.ieee802.org/tag/congestion/" class="tag-cloud-link tag-link-16 tag-link-position-8" style="font-size: 12.1176470588pt;" aria-label="Congestion (3 items)">Congestion</a>
+<a href="https://1.ieee802.org/tag/cvlan/" class="tag-cloud-link tag-link-18 tag-link-position-9" style="font-size: 10.4705882353pt;" aria-label="CVLAN (2 items)">CVLAN</a>
+<a href="https://1.ieee802.org/tag/cyclic/" class="tag-cloud-link tag-link-28 tag-link-position-10" style="font-size: 8pt;" aria-label="Cyclic (1 item)">Cyclic</a>
+<a href="https://1.ieee802.org/tag/dcb/" class="tag-cloud-link tag-link-5 tag-link-position-11" style="font-size: 17.6078431373pt;" aria-label="DCB (9 items)">DCB</a>
+<a href="https://1.ieee802.org/tag/devid/" class="tag-cloud-link tag-link-64 tag-link-position-12" style="font-size: 14.5882352941pt;" aria-label="DevID (5 items)">DevID</a>
+<a href="https://1.ieee802.org/tag/drni/" class="tag-cloud-link tag-link-61 tag-link-position-13" style="font-size: 12.1176470588pt;" aria-label="DRNI (3 items)">DRNI</a>
+<a href="https://1.ieee802.org/tag/ets/" class="tag-cloud-link tag-link-8 tag-link-position-14" style="font-size: 12.1176470588pt;" aria-label="ETS (3 items)">ETS</a>
+<a href="https://1.ieee802.org/tag/evb/" class="tag-cloud-link tag-link-10 tag-link-position-15" style="font-size: 10.4705882353pt;" aria-label="EVB (2 items)">EVB</a>
+<a href="https://1.ieee802.org/tag/filtering/" class="tag-cloud-link tag-link-30 tag-link-position-16" style="font-size: 8pt;" aria-label="Filtering (1 item)">Filtering</a>
+<a href="https://1.ieee802.org/tag/flexible-factory-iot/" class="tag-cloud-link tag-link-109 tag-link-position-17" style="font-size: 10.4705882353pt;" aria-label="Flexible Factory IoT (2 items)">Flexible Factory IoT</a>
+<a href="https://1.ieee802.org/tag/fronthaul/" class="tag-cloud-link tag-link-34 tag-link-position-18" style="font-size: 8pt;" aria-label="Fronthaul (1 item)">Fronthaul</a>
+<a href="https://1.ieee802.org/tag/iot/" class="tag-cloud-link tag-link-47 tag-link-position-19" style="font-size: 10.4705882353pt;" aria-label="IoT (2 items)">IoT</a>
+<a href="https://1.ieee802.org/tag/is-is/" class="tag-cloud-link tag-link-11 tag-link-position-20" style="font-size: 8pt;" aria-label="IS-IS (1 item)">IS-IS</a>
+<a href="https://1.ieee802.org/tag/iss/" class="tag-cloud-link tag-link-32 tag-link-position-21" style="font-size: 8pt;" aria-label="ISS (1 item)">ISS</a>
+<a href="https://1.ieee802.org/tag/link-aggregation/" class="tag-cloud-link tag-link-60 tag-link-position-22" style="font-size: 12.1176470588pt;" aria-label="Link Aggregation (3 items)">Link Aggregation</a>
+<a href="https://1.ieee802.org/tag/link-state/" class="tag-cloud-link tag-link-13 tag-link-position-23" style="font-size: 8pt;" aria-label="Link State (1 item)">Link State</a>
+<a href="https://1.ieee802.org/tag/lldp/" class="tag-cloud-link tag-link-7 tag-link-position-24" style="font-size: 10.4705882353pt;" aria-label="LLDP (2 items)">LLDP</a>
+<a href="https://1.ieee802.org/tag/lossless-data-center-networks/" class="tag-cloud-link tag-link-108 tag-link-position-25" style="font-size: 10.4705882353pt;" aria-label="Lossless Data Center Networks (2 items)">Lossless Data Center Networks</a>
+<a href="https://1.ieee802.org/tag/macsec/" class="tag-cloud-link tag-link-54 tag-link-position-26" style="font-size: 18.7058823529pt;" aria-label="MACsec (11 items)">MACsec</a>
+<a href="https://1.ieee802.org/tag/meetings/" class="tag-cloud-link tag-link-20 tag-link-position-27" style="font-size: 8pt;" aria-label="Meetings (1 item)">Meetings</a>
+<a href="https://1.ieee802.org/tag/membership/" class="tag-cloud-link tag-link-65 tag-link-position-28" style="font-size: 10.4705882353pt;" aria-label="membership (2 items)">membership</a>
+<a href="https://1.ieee802.org/tag/minutes/" class="tag-cloud-link tag-link-52 tag-link-position-29" style="font-size: 19.1176470588pt;" aria-label="Minutes (12 items)">Minutes</a>
+<a href="https://1.ieee802.org/tag/mobile/" class="tag-cloud-link tag-link-35 tag-link-position-30" style="font-size: 8pt;" aria-label="Mobile (1 item)">Mobile</a>
+<a href="https://1.ieee802.org/tag/nendica/" class="tag-cloud-link tag-link-106 tag-link-position-31" style="font-size: 12.1176470588pt;" aria-label="Nendica (3 items)">Nendica</a>
+<a href="https://1.ieee802.org/tag/pbb/" class="tag-cloud-link tag-link-12 tag-link-position-32" style="font-size: 10.4705882353pt;" aria-label="PBB (2 items)">PBB</a>
+<a href="https://1.ieee802.org/tag/pfc/" class="tag-cloud-link tag-link-6 tag-link-position-33" style="font-size: 13.4901960784pt;" aria-label="PFC (4 items)">PFC</a>
+<a href="https://1.ieee802.org/tag/queuing/" class="tag-cloud-link tag-link-27 tag-link-position-34" style="font-size: 8pt;" aria-label="Queuing (1 item)">Queuing</a>
+<a href="https://1.ieee802.org/tag/registration/" class="tag-cloud-link tag-link-21 tag-link-position-35" style="font-size: 8pt;" aria-label="Registration (1 item)">Registration</a>
+<a href="https://1.ieee802.org/tag/reservation/" class="tag-cloud-link tag-link-23 tag-link-position-36" style="font-size: 8pt;" aria-label="Reservation (1 item)">Reservation</a>
+<a href="https://1.ieee802.org/tag/security/" class="tag-cloud-link tag-link-55 tag-link-position-37" style="font-size: 20.0784313725pt;" aria-label="Security (14 items)">Security</a>
+<a href="https://1.ieee802.org/tag/spb/" class="tag-cloud-link tag-link-14 tag-link-position-38" style="font-size: 10.4705882353pt;" aria-label="SPB (2 items)">SPB</a>
+<a href="https://1.ieee802.org/tag/srp/" class="tag-cloud-link tag-link-22 tag-link-position-39" style="font-size: 8pt;" aria-label="SRP (1 item)">SRP</a>
+<a href="https://1.ieee802.org/tag/stream/" class="tag-cloud-link tag-link-29 tag-link-position-40" style="font-size: 8pt;" aria-label="Stream (1 item)">Stream</a>
+<a href="https://1.ieee802.org/tag/synchronization/" class="tag-cloud-link tag-link-25 tag-link-position-41" style="font-size: 8pt;" aria-label="Synchronization (1 item)">Synchronization</a>
+<a href="https://1.ieee802.org/tag/timing/" class="tag-cloud-link tag-link-24 tag-link-position-42" style="font-size: 8pt;" aria-label="Timing (1 item)">Timing</a>
+<a href="https://1.ieee802.org/tag/tsn/" class="tag-cloud-link tag-link-15 tag-link-position-43" style="font-size: 22pt;" aria-label="TSN (20 items)">TSN</a>
+<a href="https://1.ieee802.org/tag/work-item/" class="tag-cloud-link tag-link-111 tag-link-position-44" style="font-size: 10.4705882353pt;" aria-label="Work Item (2 items)">Work Item</a>
+<a href="https://1.ieee802.org/tag/yang/" class="tag-cloud-link tag-link-36 tag-link-position-45" style="font-size: 18.1568627451pt;" aria-label="YANG (10 items)">YANG</a></div>
+</div><div class="widget"><h4 class="widgetTitle">Meta</h4>			<ul>
+						<li><a href="https://ieee802dot1.wpengine.com/wp-login.php">Log in</a></li>
+			<li><a href="https://1.ieee802.org/feed/">Entries <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="https://1.ieee802.org/comments/feed/">Comments <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="https://wordpress.org/" title="Powered by WordPress, state-of-the-art semantic personal publishing platform.">WordPress.org</a></li>			</ul>
+			</div>                </div>
+            </div>
+        </div>
+    </div>
+</aside></div><footer class="container-fluid"><div class="content clearfix"><div class="col-md-12 copyright"><p><strong>©&nbsp;&nbsp;<a href="https://1.ieee802.org/">IEEE 802.1</a></strong>&nbsp;&nbsp;|&nbsp;&nbsp;<a class="footer-rss-link" href="https://1.ieee802.org/feed/" title="RSS Feed">RSS</a></p></div></div></footer><script type="text/javascript">
+/* <![CDATA[ */
+var tocplus = {"smooth_scroll":"1","visibility_show":"show","visibility_hide":"hide","width":"Auto"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./P802.1AS-Rev – Timing and Synchronization for Time-Sensitive Applications __files/front.min.js.Download"></script>
+<script type="text/javascript" src="./P802.1AS-Rev – Timing and Synchronization for Time-Sensitive Applications __files/jquery.qtip.min.js.Download"></script>
+<script type="text/javascript" src="./P802.1AS-Rev – Timing and Synchronization for Time-Sensitive Applications __files/moment.min.js.Download"></script>
+<script type="text/javascript" src="./P802.1AS-Rev – Timing and Synchronization for Time-Sensitive Applications __files/moment-timezone-with-data.min.js.Download"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var simcal_default_calendar = {"ajax_url":"\/wp-admin\/admin-ajax.php","nonce":"8979fa54fb","locale":"en_US","text_dir":"ltr","months":{"full":["January","February","March","April","May","June","July","August","September","October","November","December"],"short":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]},"days":{"full":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"short":["Sun","Mon","Tue","Wed","Thu","Fri","Sat"]},"meridiem":{"AM":"AM","am":"am","PM":"PM","pm":"pm"}};
+var simcal_default_calendar = {"ajax_url":"\/wp-admin\/admin-ajax.php","nonce":"8979fa54fb","locale":"en_US","text_dir":"ltr","months":{"full":["January","February","March","April","May","June","July","August","September","October","November","December"],"short":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]},"days":{"full":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"short":["Sun","Mon","Tue","Wed","Thu","Fri","Sat"]},"meridiem":{"AM":"AM","am":"am","PM":"PM","pm":"pm"}};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./P802.1AS-Rev – Timing and Synchronization for Time-Sensitive Applications __files/default-calendar.min.js.Download"></script>
+<script type="text/javascript" src="./P802.1AS-Rev – Timing and Synchronization for Time-Sensitive Applications __files/imagesloaded.pkgd.min.js.Download"></script>
+<script type="text/javascript" src="./P802.1AS-Rev – Timing and Synchronization for Time-Sensitive Applications __files/wp-embed.min.js.Download"></script>
+<style type="text/css">
+    /* loading */
+    .lt-sk-three-bounce {
+      margin: 2px auto;
+      width: 100%;
+      text-align: center; }
+      .lt-sk-three-bounce .lt-sk-child {
+        width: 5px;
+        height: 5px;
+        background-color: #333;
+        border-radius: 100%;
+        display: inline-block;
+        -webkit-animation: lt-sk-three-bounce 1.4s ease-in-out 0s infinite both;
+                animation: lt-sk-three-bounce 1.4s ease-in-out 0s infinite both; }
+      .lt-sk-three-bounce .lt-sk-bounce1 {
+        -webkit-animation-delay: -0.32s;
+                animation-delay: -0.32s; }
+      .lt-sk-three-bounce .lt-sk-bounce2 {
+        -webkit-animation-delay: -0.16s;
+                animation-delay: -0.16s; }
+
+    @-webkit-keyframes lt-sk-three-bounce {
+      0%, 80%, 100% {
+        -webkit-transform: scale(0);
+                transform: scale(0); }
+      40% {
+        -webkit-transform: scale(1);
+                transform: scale(1); } }
+
+    @keyframes lt-sk-three-bounce {
+      0%, 80%, 100% {
+        -webkit-transform: scale(0);
+                transform: scale(0); }
+      40% {
+        -webkit-transform: scale(1);
+                transform: scale(1); } }
+  </style></body></html>

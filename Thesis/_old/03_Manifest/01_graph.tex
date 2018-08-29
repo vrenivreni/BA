@@ -1,0 +1,69 @@
+\centering\begin{tikzpicture}[mindmap,
+  level 1 concept/.append style={level distance=130,sibling angle=35},
+  extra concept/.append style={color=blue!50,text=black}]
+
+  % Applied area: Latency
+
+  \begin{scope}[mindmap, concept color=orange, text=white]
+    \node [concept] at (0,-5.5) {Latenz}[clockwise from=5] 
+      child {node [concept] (band) {Bandbreite}}
+      child {node [concept] (frame) {Frame-priorisierung}}
+      child {node [concept] (shap) {Trafic Shaping}}
+      child {node [concept] (pree) {Frame Preemtion}}
+      child {node [concept] (schedul) {Trefic Scheduling}};
+  \end{scope}
+  
+  \begin{scope}[mindmap, concept color=blue, text=white]
+  	\node [concept] at (0,1) {Bandbreite}[clockwise from=20]
+  		child {node [concept] (freq) {Frequenz}} 
+  		child {node [concept] (mess) {Message}}
+  		child {node [concept] (sys) {System}};
+  \end{scope}
+  
+  \begin{scope}[mindmap, concept color=violet, text=white]
+  	\node [concept] at (-8,-10) {Jitter}[clockwise from=100] 
+  		child {node [concept] (maxl) {Maximale Latenz}}
+  		child {node [concept] (minl) {Minimale Latenz}};
+  \end{scope}
+
+  \begin{scope}[mindmap, concept color=green, text=white]
+	\node [concept] at (-7,-1) {Paketverlust}[clockwise from=-35] 
+		child {node [concept] (rate) {Verlustrate}};
+  \end{scope}
+  
+  \begin{scope}[mindmap, concept color=red, text=white]
+  	\node [concept] at (3,-13) {Zeit-synchronisierung }[clockwise from=220] 
+  		child {node [concept] (tsn) {TSN}};
+  \end{scope}
+  
+  \begin{scope}[mindmap, concept color=purple, text=white]
+  	\node [concept] at (-8,-15) {Sicherheit}[clockwise from=30] 
+  		child {node [concept] (asil) {ASIL}}
+  		child {node [concept] (qos) {QoS}};
+  \end{scope}
+  
+  % Connection
+  \begin{pgfonlayer}{background}
+  	\draw [circle connection bar]
+  		%TSN
+  		(tsn) edge (schedul)
+  		(tsn) edge (pree)
+  		(tsn) edge (shap)
+  		%Bandbreit
+  		(band) edge (sys)
+  		%Verlustrate
+  		(rate) edge (sys)
+  		(rate) edge (mess)
+  		%Sicherheitslevel
+  		(asil) edge (rate)
+  		(asil) edge (frame)
+  		(asil) edge (band)
+  		%Message
+  		(mess) edge (freq)
+  		%Qos
+  		(qos) edge (tsn)
+  		%Jitter
+  		(minl) edge (maxl) edge (schedul);
+ 	\end{pgfonlayer}
+
+\end{tikzpicture}

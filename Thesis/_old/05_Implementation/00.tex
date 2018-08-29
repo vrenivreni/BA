@@ -1,0 +1,12 @@
+\chapter{Implementierung der Features}\label{sec:Impl}
+Das Ergebnis aus der dem Entwurf des Maifestes wird eine erste Implementation eines Testszenarios sein. Dies ist ebenfalls Bestandteil dieser Arbeit und wird mittels einiger der in Kapitel \ref{sec:FeatureDef} definierten Features umgesetzt. In dieser Arbeit werden nicht alle genanten Features umgesetzt, sondern lediglich ein Szenario im System, welches bereits softwareseitig umsetzbar und testbar ist. Die benötigten Klassen hierzu werde weitestgehend neu implementiert, lediglich Schnittstellen sind bereits im System enthalten und werden als gegeben betrachtet. 
+
+Einen generellen Überblick aller Relevanten Komponenten und deren Kommunikationsschnittstellen, sog. Interfaces, werden in Folgenden Komponentendiagramm kurz dargestellt. Dies soll die Verbindungen zwischen den Komponenten, sowie die Vernetzung innerhalb der Unterkomponenten vereinfacht darstellen.
+\singlefigureMax{\label{fig:KomponentenSystem}}{99_Dias/ComponentManager.png}{Komponentendiagramm Netzwerkmanager}
+
+\newpage
+
+Da besonders im Bereich Autonomes Fahren ein hoher Anspruch an die Ausfallsicherheit für eine Anwendungen im System gilt, werden im Nachgang noch mehrere Unit-Tests durchgeführt. Anhand dieser kann die Software auf verschiedene Eingabefälle geprüft werden. In Unit-Test werden isoliertet Softwareeinheiten, wie einzelne Klassen, mittels definierter Eingabe geprüft, um eine zuvor festgelegte Ausgabe zu erzeugen. Nur wenn dieses Ergebnis mit der gewünschten Ausgabe übereinstimmt, wird der Test als bestanden gewertet. Dies garantiert eine möglichst vielschichtige Abdeckung an Testfällen. Unit-Test geben aber keine Auskunft über das Zusammenspiel von Klassen über Schnittstellen, dies muss im Nachgang noch manuell getestet werden.
+
+\input{05_Implementation/02_Test.tex}
+\input{05_Implementation/01_Features.tex}

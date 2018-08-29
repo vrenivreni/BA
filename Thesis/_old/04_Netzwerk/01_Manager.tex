@@ -1,0 +1,14 @@
+\section{Verwaltung der Anwendungen im System} \label{sec:REST}
+Der Vorgang zum Hinzufügen einer Anwendung, welcher bereits in Abschnitt \ref{sec:Orchestrator} beschriebene ist, wird jedoch nur eine der nötigen Funktionen des Orchestrators im Hinblick auf Applikationsverwaltung sein. Es soll nicht nur möglich sein, neue Anwendungen zu starten, sondern auch bereits laufende auf eine andere \acs{ECU} umzuziehen oder diese endgültig zu beenden. Dies kann nötig sein, falls eine Kommunikationsstrecke bereits stark ausgelastet ist, wobei andere noch genügend Kapazität hätten, um einen reibungslosen Ablauf des Systems zu garantieren. In diesem Fall würde eine Applikation umgezogen werden.
+
+Diese Funktionalitäten sind an das Prinzip der \acf{REST} Technologie angelehnt \cite{Rest}. Dies zeichnet sich in erster Linie durch ihr vordefiniertes Aktionsprinzip \emph{CRUD}, was für \emph{create, retrieve, update und delete} steht, aus. Drei der Funktionen können in den Prozess des Orchestrators überführt werden:
+\begin{itemize}
+	\item \emph{Create}, eine neue Anwendung wird im System gestartet. 
+	\item \emph{Update}, der Status einer laufenden Anwendung im System soll geändert werden. Dies kann beispielsweise ein Umzug auf eine andere \acs{ECU} sein. Auch das Pausieren einer Anwendung, ohne sie endgültig aus dem System zu entfernen, kann so realisiert werden.
+	\item \emph{Delete}, eine laufende Anwendung soll im System beendet und entfernt werden. Die Applikation wird dabei vollständig aus dem System gelöscht.
+\end{itemize}
+
+Diese Arbeit behandelt lediglich das Hinzufügen einer neuen Applikation in ein bestehendes System. Die anderen Punkte müssen separat betrachtet werden, da sie ein Wiederherstellen des zuletzt gültigen Netzwerkzustands bedingen. Hierzu gibt es verschiedene Ansätze, wie das Speichern der letzten Konfigurationen vor einer Erweiterung des Netzwerkes oder das komplette Neukonfiguration des Systems. Die Ausarbeitung dieser Prinzipien würde jedoch den Rahmen der Abhandlung sprengen und wird hier nur der Vollständigkeit halber erwähnt. 
+\newpage
+
+ 

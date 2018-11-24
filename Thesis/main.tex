@@ -48,7 +48,8 @@
 	\counterwithout{figure}{chapter}
 	
 	\usepackage[labelfont=bf]{caption}
-	
+	\usepackage{subcaption}
+	\usepackage{wrapfig}
 	
 	\usepackage[bottom]{footmisc}
 %END_FOLD
@@ -117,7 +118,7 @@
 
 
 %BEGIN_FOLD bibliography
-	\usepackage{cite}
+	\usepackage{apacite}
 %END_FOLD
 
 %BEGIN_FOLD colors
@@ -186,8 +187,8 @@
 	\begin{flushleft}
 		\newpage
 		\def\UrlBreaks{\do\/\do-}
-		\bibliography{literatur}{}
-		\bibliographystyle{unsrt}
+		\bibliographystyle{apacite}
+		\bibliography{literatur}
 		\addcontentsline{toc}{chapter}{Literaturverzeichnis}
 	\end{flushleft}
 	

@@ -20,7 +20,7 @@
 	\usepackage{microtype}
 	\usepackage{lipsum}
 	
-	\renewcommand{\baselinestretch}{1.2}
+	\renewcommand{\baselinestretch}{1.15}
 %END_FOLDs
 
 %BEGIN_FOLD content
@@ -145,7 +145,7 @@
 	\newpage
 	\input{titelseite.tex}
 	
-%	\input{danksagung.tex}
+	\input{Abstract.tex}
 	
 %	\input{sperrvermerk.tex} 
 	
@@ -175,13 +175,14 @@
 %	\input{05_Evaluierung/00.tex}
 	
 	\newpage
-	\input{06_Fazit/00.tex}
+	\input{03_Fazit/00.tex}
 	
 	\newpage
 	\addcontentsline{toc}{chapter}{Abbildungsverzeichnis}
 	\listoffigures
 	
 	\newpage
+	\addcontentsline{toc}{chapter}{Tabellenverzeichnis}
 	\listoftables% Tabellenverzeichnis
 
 	\begin{flushleft}
@@ -189,7 +190,7 @@
 		\def\UrlBreaks{\do\/\do-}
 		\bibliographystyle{apacite}
 		\bibliography{literatur}
-		\addcontentsline{toc}{chapter}{Literaturverzeichnis}
+		%\addcontentsline{toc}{chapter}{Literaturverzeichnis}
 	\end{flushleft}
 	
 	\includepdf[pages=-]{99_PDF_INCLUDE/Bachelorerklaerung.pdf}
